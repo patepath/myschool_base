@@ -1,0 +1,86 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+
+                <div class="form-group row">
+
+                    <div class="col-2">
+                        <label for="reportdate">วันที่</label>
+                        <select class="form-control form-select" [(ngModel)]="dd">
+                            <option *ngFor="let dd of dds" [ngValue]="dd">{{dd}}</option>
+                        </select>
+                    </div>
+
+                    <div class="col-2">
+                        <label for="reportdate">เดือน</label>
+                        <select class="form-control form-select" [(ngModel)]="mm">
+                            <option *ngFor="let mm of mms" [ngValue]="mm.Value">{{mm.Name}}</option>
+                        </select>
+                    </div>
+
+                    <div class="col-2">
+                        <label for="reportdate">ปี (พ.ศ.)</label>
+                        <select class="form-control form-select" [(ngModel)]="yyyy">
+                            <option *ngFor="let yyyy of yyyys" [ngValue]="yyyy">{{yyyy}}</option>
+                        </select>
+                    </div>
+<!--
+                    <div class="col-2">
+                        <label for="code">รหัสนักเรียน</label>
+                        <input type="text" id="code" class="form-control" [(ngModel)]="code">
+                    </div>
+                -->
+                    <div class="col-3">
+                        <label for="grade">ชั้นเรียน</label>
+                        <select class="form-control form-select" [(ngModel)]="grade" (change)="searchRoom()">
+                            <option value="0">- ทั้งหมด -</option>
+                            <option *ngFor="let grade of grades" [ngValue]="grade">{{grade.Name}}</option>
+                        </select>
+                    </div>
+
+                    <div class="col-2">
+                        <label for="room">ห้องเรียน</label>
+                        <select class="form-control form-select" [(ngModel)]="room">
+                            <option *ngFor="let room of rooms" [ngValue]="room">{{room.Name}}</option>
+                        </select>
+                    </div>
+
+                </div>
+
+                <button class="btn btn-default"  (click)="search()">ค้นหา</button>
+
+                <hr>
+
+                <table class="table table-hover">
+
+                    <caption>รายการ ขาด ลา มาสาย</caption>
+
+                    <thead>
+                        <tr>
+                            <th scope="col" style="width: 10em; text-align: center;">รหัสนักเรียน</th>
+                            <th scope="col">ชื่อ-นามสกุล</th>
+                            <th scope="col" style="width: 15em; text-align: center;">ห้อง</th>
+                            <th scope="col" style="width: 15em; text-align: center;">เวลาเข้า</th>
+                            <th scope="col" style="width: 15em; text-align: center;">เวลาออก</th>
+                            <th scope="col" style="width: 15em; text-align: center;">สถานะ</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr *ngFor="let report of reports">
+                            <td style="text-align: center;">{{report.Code}}</td>
+                            <td>{{report.FullName}}</td>
+                            <td style="text-align: center;">{{report.ClassRoom}}</td>
+                            <td style="text-align: center;">{{report.Time_in}}</td>
+                            <td style="text-align: center;">{{report.Time_out}}</td>
+                            <td style="text-align: center;">{{report.Status}}</td>
+                        </tr>
+                    </tbody>
+
+                </table>
+
+            </div>
+        </div>
+    </div>
+</div>

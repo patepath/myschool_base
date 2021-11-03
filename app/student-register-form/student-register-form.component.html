@@ -1,0 +1,695 @@
+  
+<div style="width: fit-content; margin-left: 3em; margin-bottom: 1em">
+
+    <div>
+        <label>หมายเลขบัตรประชาชน</label>
+        <input matInput [(ngModel)]="studentReg.Student_idcard" (blur)="getStudentReg()">
+    </div>
+    
+    <div ppearance="fill">
+        <label>ชั้น ม. *</label>
+        <select [(value)]="studentGrade">
+            <mat-option *ngFor="let grade of grades" [value]="grade">{{grade.Name}}</mat-option>
+        </select>
+    </div>
+
+    <div style="width: 5em">
+        <label>ห้อง</label>
+        <input matInput [(ngModel)]="studentReg.Room" placeholder="" >
+    </div>
+
+    <div>
+        <label>เลขที่</label>
+        <input matInput [(ngModel)]="no" placeholder="" >
+    </div>
+
+    <div>
+        <label>รหัสประจำตัว</label>
+        <input matInput [(ngModel)]="studentReg.Code" placeholder="" >
+    </div>
+
+    <h3>1. ประวัตินักเรียน</h3>
+
+    <img src="data:image/jpeg;base64,{{studentReg.ImgBase64}}" alt="" style="width: 240px; height: 300px; border: solid 2px darkgray; margin: 0.5em; padding: 0.25em"/><br/>
+
+    <input type="file" accept="image/*" (change)="getFile($event)"><br>
+
+    <div>
+        <label>ชื่อ</label>
+        <input matInput [(ngModel)]="studentReg.Student_firstname" placeholder="ไม่ต้องใส่คำนำหน้าชื่อ">
+    </div>
+
+    <div>
+        <label>นามสกุล</label>
+        <input matInput [(ngModel)]="studentReg.Student_lastname" placeholder="">
+    </div>
+
+    <div>
+        <label>อายุ</label>
+        <input matInput [(ngModel)]="age" placeholder="">
+    </div>
+    <br>
+
+    <div>
+        <label>นับถือศาสนา</label>
+        <select [(value)]="studentReligion">
+            <mat-option *ngFor="let religion of religions" [value]="religion">{{religion.Name}}</mat-option>
+        </select>
+    </div>
+
+    <div>
+        <label>หมู่เลือด</label>
+        <select [(value)]="bloodgroup">
+            <mat-option *ngFor="let bloodgroup of bloodgroups" [value]="bloodgroup">{{bloodgroup.Name}}</mat-option>
+        </select>
+    </div>
+
+<!--
+
+    <div appearance="fill" style="margin-left: 1em">
+		<label>วันเดือนปี เกิด</label>
+		<input matInput [matDatepicker]="picker" [(ngModel)]="birthday">
+		<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+		<mat-datepicker #picker></mat-datepicker>
+    </div>
+-->
+
+    <div>
+        <label>ปัจจุบันอาศัยอยู่กับ</label>
+        <input matInput [(ngModel)]="studentReg.Student_livewith" placeholder="" >
+    </div>
+    <br>
+
+    <div>
+    <label>ที่อยู่ปัจจุบันเลขที่</label>
+    <input matInput [(ngModel)]="studentReg.Student_addrno" placeholder="" >
+    </div>
+
+    <div>
+    <label>หมู่</label>
+    <input matInput [(ngModel)]="studentReg.Student_addrmoo" placeholder="" >
+    </div>
+
+    <div>
+    <label>หมู่บ้าน</label>
+    <input matInput [(ngModel)]="studentReg.Student_addrvill" placeholder="" >
+    </div>
+
+    <div>
+    <label>ซอย</label>
+    <input matInput [(ngModel)]="studentReg.Student_addrsoi" placeholder="" >
+    </div>
+    <br>
+
+    <div>
+    <label>ถนน</label>
+    <input matInput [(ngModel)]="studentReg.Student_addrstreet" placeholder="" >
+    </div>
+
+    <div>
+    <label>แขวง</label>
+    <input matInput [(ngModel)]="studentReg.Student_addrtambol" placeholder="" >
+    </div>
+
+    <div>
+    <label>เขต</label>
+    <input matInput [(ngModel)]="studentReg.Student_addramphur" placeholder="" >
+    </div>
+    <br>
+
+    <div>
+    <label>จังหวัด</label>
+        <select [(value)]="this.studentProvince">
+            <mat-option *ngFor="let province of provinces" [value]="province">{{province.Name}}</mat-option>
+        </select>
+    </div>
+
+    <div>
+    <label>รหัสไปรษณีย์</label>
+    <input matInput [(ngModel)]="studentReg.Student_addrzipcode" placeholder="" >
+    </div>
+
+    <div>
+    <label>โทรศัพท์</label>
+    <input matInput [(ngModel)]="studentReg.Student_phone" placeholder="" >
+    </div>
+    <br>
+
+    <div>
+    <label>โทรศัพท์มือถือ</label>
+    <input matInput [(ngModel)]="studentReg.Student_cellphone" placeholder="" >
+    </div>
+
+    <div>
+    <label>มีตำหนิที่</label>
+    <input matInput [(ngModel)]="studentReg.Student_scar" placeholder="" >
+    </div>
+
+    <div>
+    <label>โรคประจำตัว</label>
+    <input matInput [(ngModel)]="studentReg.Student_underlyingdisease" placeholder="" >
+    </div>
+
+    <div>
+    <label>ชื่อเล่น</label>
+    <input matInput [(ngModel)]="studentReg.Student_nickname" placeholder="" value="">
+    </div>
+    <br>
+
+    <div>
+    <label>หมายเลขบัตรประชาชน</label>
+    <input matInput value="{{studentReg.Student_idcard}}" readonly="true">
+    </div>
+
+    <div>
+    <label>โรงเรียนเดิม</label>
+    <input matInput [(ngModel)]="studentReg.Oldschool" placeholder="" >
+    </div>
+
+    <div>
+    <label>จังหวัด</label>
+    <select [(value)]="oldschoolProvince">
+        <mat-option *ngFor="let province of provinces" [value]="province">{{province.Name}}</mat-option>
+    </select>
+    </div>
+    <br>
+
+    <div>
+    <label>มีพี่น้อง</label>
+    <input matInput [(ngModel)]="brethrenamount" placeholder="" >
+    </div>
+
+    <div>
+    <label>เป็นบุตรลำดับที่</label>
+    <input matInput [(ngModel)]="brethrenno" placeholder="" >
+    </div>
+
+    <div style="width: 25em">
+    <label>มีความบกพร่องทางร่างกายคือ</label>
+    <input matInput [(ngModel)]="studentReg.Student_scar" placeholder="" >
+    </div>
+    <br>
+
+    <div style="width: 25em">
+    <label>บุคคลที่ใกล้ขิด</label>
+    <input matInput [(ngModel)]="studentReg.Bestfriend" placeholder="" >
+    </div>
+
+    <div>
+    <label>ศึกษาอยู่ระดับชั้น</label>
+        <select [(value)]="bestfridndGrade">
+            <mat-option *ngFor="let grade of grades" [value]="grade">{{grade.Name}}</mat-option>
+        </select>
+    </div>
+
+    <div>
+    <label>โทรศัพท์มือถือ</label>
+    <input matInput [(ngModel)]="studentReg.Bestfriend_phone" placeholder="" >
+    </div>
+    <br>
+
+    <section style="margin-top: 0.5em;">
+        <mat-checkbox [(ngModel)]="studentReg.Parent_status1" style="margin-right: 0.5em">บิดา-มารดายังมีชีวิต</mat-checkbox>
+        <mat-checkbox [(ngModel)]="studentReg.Parent_status2" style="margin-right: 0.5em">บิดาถืงแก่กรรม</mat-checkbox>
+        <mat-checkbox [(ngModel)]="studentReg.Parent_status3" style="margin-right: 0.5em">มารดาถืงแก่กรรม</mat-checkbox>
+        <mat-checkbox [(ngModel)]="studentReg.Parent_status4" style="margin-right: 0.5em">บิดามารดาอยู่ด้วยกัน</mat-checkbox>
+        <mat-checkbox [(ngModel)]="studentReg.Parent_status5" style="margin-right: 0.5em">บิดามารดาอย่าร้างกัน</mat-checkbox>
+    </section>
+
+    <h3>2. ประวัติบิดา (ผู้ปกครองคนที่ 1) <mat-checkbox [(ngModel)]="parentCheck1" (change)="parentCheckChanged(1)" style="margin-left: 2em">ผู้ปกครองหลัก</mat-checkbox></h3>
+
+    <img src="data:image/jpeg;base64,{{studentReg.ImgBase64P1}}" alt="" style="width: 240px; height: 300px; border: solid 2px darkgray; margin: 0.5em; padding: 0.25em"/><br/>
+
+    <input type="file" accept="image/*" (change)="getFile1($event)"><br>
+
+    <div>
+    <label>ชื่อ</label>
+    <input matInput [(ngModel)]="studentReg.Parent1_firstname" placeholder="" >
+    </div>
+
+    <div>
+    <label>นามสกุล</label>
+    <input matInput [(ngModel)]="studentReg.Parent1_lastname" placeholder="" >
+    </div>
+
+    <div>
+    <label>อายุ</label>
+    <input matInput [(ngModel)]="parent1Age" placeholder="" >
+    </div>
+
+    <div>
+    <label>ศาสนา</label>
+        <select [(value)]="parent1Religion">
+            <mat-option *ngFor="let religion of religions" [value]="religion">{{religion.Name}}</mat-option>
+        </select>
+    </div>
+    <br>
+
+    <button mat-raised-button color="primary" style="margin-right: 0.25em" (click)="copyStudentAddrToParent1()">คัดลอกอยู่นักเรียน</button><br>
+
+    <p>
+    <div>
+    <label>ที่อยู่ตามทะเบียนบ้านเลขที่</label>
+    <input matInput [(ngModel)]="studentReg.Parent1_addrno" placeholder="" >
+    </div>
+
+    <div>
+    <label>หมู่</label>
+    <input matInput [(ngModel)]="studentReg.Parent1_addrmoo" placeholder="" >
+    </div>
+
+    <div>
+    <label>หมู่บ้าน</label>
+    <input matInput [(ngModel)]="studentReg.Parent1_addrvill" placeholder="" >
+    </div>
+
+    <div>
+    <label>ซอย</label>
+    <input matInput [(ngModel)]="studentReg.Parent1_addrsoi" placeholder="" >
+    </div>
+    <br>
+
+    <div>
+    <label>ถนน</label>
+    <input matInput [(ngModel)]="studentReg.Parent1_addrstreet" placeholder="" >
+    </div>
+
+    <div>
+    <label>แขวง</label>
+    <input matInput [(ngModel)]="studentReg.Parent1_addrtambol" placeholder="" >
+    </div>
+
+    <div>
+    <label>เขต</label>
+    <input matInput [(ngModel)]="studentReg.Parent1_addramphur" placeholder="" >
+    </div>
+
+    <div>
+    <label>จังหวัด</label>
+    <select [(value)]="parent1Province">
+        <mat-option *ngFor="let province of provinces" [value]="province">{{province.Name}}</mat-option>
+    </select>
+    </div>
+    <br>
+
+    <div>
+    <label>รหัสไปรษณีย์</label>
+    <input matInput [(ngModel)]="studentReg.Parent1_addrzipcode" placeholder="" >
+    </div>
+
+    <div>
+    <label>โทรศัพท์</label>
+    <input matInput [(ngModel)]="studentReg.Parent1_addrphone" placeholder="" >
+    </div>
+
+    <div>
+    <label>โทรศัพท์มือถือ</label>
+    <input matInput [(ngModel)]="studentReg.Parent1_addrcellphone" placeholder="" >
+    </div>
+    <br>
+
+    <button mat-raised-button color="primary" style="margin-right: 0.25em" (click)="copyaddrparent1()">คัดลอกอยู่ตามทะเบียนบ้าน</button><br>
+
+    <p>
+    <div>
+    <label>ที่อยู่ปัจจุบันเลขที่</label>
+    <input matInput [(ngModel)]="studentReg.Parent1_addrpresentno" placeholder="" >
+    </div>
+
+    <div>
+    <label>หมู่</label>
+    <input matInput [(ngModel)]="studentReg.Parent1_addrpresentmoo" placeholder="" >
+    </div>
+
+    <div>
+    <label>หมู่บ้าน</label>
+    <input matInput [(ngModel)]="studentReg.Parent1_addrpresentvill" placeholder="" >
+    </div>
+
+    <div>
+    <label>ซอย</label>
+    <input matInput [(ngModel)]="studentReg.Parent1_addrpresentsoi" placeholder="" >
+    </div>
+
+    <div>
+    <label>ถนน</label>
+    <input matInput [(ngModel)]="studentReg.Parent1_addrpresentstreet" placeholder="" >
+    </div>
+    <br>
+
+    <div>
+    <label>แขวง</label>
+    <input matInput [(ngModel)]="studentReg.Parent1_addrpresenttambol" placeholder="" >
+    </div>
+
+    <div>
+    <label>เขต</label>
+    <input matInput [(ngModel)]="studentReg.Parent1_addrpresentamphur" placeholder="" >
+    </div>
+
+    <div>
+    <label>จังหวัด</label>
+    <select [(value)]="parent1PresentProvince">
+        <mat-option *ngFor="let province of provinces" [value]="province">{{province.Name}}</mat-option>
+    </select>
+    </div>
+
+    <div>
+    <label>รหัสไปรษณีย์</label>
+    <input matInput [(ngModel)]="studentReg.Parent1_addrpresentzipcode" placeholder="" >
+    </div>
+    <br>
+
+    <div style="width: 30em">
+    <label>สถานที่ทำงาน</label>
+    <input matInput [(ngModel)]="studentReg.Parent1_office" placeholder="" >
+    </div>
+
+    <div>
+    <label>โทรศัพท์</label>
+    <input matInput [(ngModel)]="studentReg.Parent1_officephone" placeholder="" >
+    </div>
+    <br>
+
+    <div style="width: 30em">
+    <label>E-mail</label>
+    <input matInput [(ngModel)]="studentReg.Parent1_email" placeholder="" >
+    </div>
+    <br>
+
+    <div >
+    <label>วุฒิการศึกษา</label>
+    <select [(value)]="parent1Education">
+        <mat-option *ngFor="let edu of educations" [value]="edu">{{edu.Name}}</mat-option>
+    </select>
+    </div>
+
+    <div>
+    <label>ตำแหน่งหน้าที่</label>
+    <input matInput [(ngModel)]="studentReg.Parent1_position" placeholder="" >
+    </div>
+    <br>
+
+    <h3>3. ประวัติมารดา (ผู้ปกครองคนที่ 2) <mat-checkbox [(ngModel)]="parentCheck2" (change)="parentCheckChanged(2)" style="margin-left: 2em">ผู้ปกครองหลัก</mat-checkbox></h3>
+
+    <img src="data:image/jpeg;base64,{{studentReg.ImgBase64P2}}" alt="" style="width: 240px; height: 300px; border: solid 2px darkgray; margin: 0.5em; padding: 0.25em"/><br/>
+
+    <input type="file" accept="image/*" (change)="getFile2($event)"><br>
+
+    <div>
+    <label>ชื่อ</label>
+    <input matInput [(ngModel)]="studentReg.Parent2_firstname" placeholder="" >
+    </div>
+
+    <div>
+    <label>นามสกุล</label>
+    <input matInput [(ngModel)]="studentReg.Parent2_lastname" placeholder="" >
+    </div>
+
+    <div>
+    <label>อายุ</label>
+    <input matInput [(ngModel)]="parent2Age" placeholder="" >
+    </div>
+
+    <div>
+    <label>ศาสนา</label>
+        <select [(value)]="studentReg.Parent2_religion">
+            <mat-option *ngFor="let religion of religions" [value]="religion.Value">{{religion.Name}}</mat-option>
+        </select>
+    </div>
+    <br>
+
+    <button mat-raised-button color="primary" style="margin-right: 0.25em" (click)="copyStudentAddrToParent2()">คัดลอกอยู่นักเรียน</button><br>
+
+    <p>
+    <div>
+    <label>ที่อยู่ตามทะเบียนบ้านเลขที่</label>
+    <input matInput [(ngModel)]="studentReg.Parent2_addrno" placeholder="" >
+    </div>
+
+    <div>
+    <label>หมู่</label>
+    <input matInput [(ngModel)]="studentReg.Parent2_addrmoo" placeholder="" >
+    </div>
+
+    <div>
+    <label>หมู่บ้าน</label>
+    <input matInput [(ngModel)]="studentReg.Parent2_addrvill" placeholder="" >
+    </div>
+
+    <div>
+    <label>ซอย</label>
+    <input matInput [(ngModel)]="studentReg.Parent2_addrsoi" placeholder="" >
+    </div>
+    <br>
+
+    <div>
+    <label>ถนน</label>
+    <input matInput [(ngModel)]="studentReg.Parent2_addrstreet" placeholder="" >
+    </div>
+
+    <div>
+    <label>แขวง</label>
+    <input matInput [(ngModel)]="studentReg.Parent2_addrtambol" placeholder="" >
+    </div>
+
+    <div>
+    <label>เขต</label>
+    <input matInput [(ngModel)]="studentReg.Parent2_addramphur" placeholder="" >
+    </div>
+
+    <div>
+    <label>จังหวัด</label>
+    <select [(value)]="parent2Province">
+        <mat-option *ngFor="let province of provinces" [value]="province">{{province.Name}}</mat-option>
+    </select>
+    </div>
+    <br>
+
+    <div>
+    <label>รหัสไปรษณีย์</label>
+    <input matInput [(ngModel)]="studentReg.Parent2_addrzipcode" placeholder="" >
+    </div>
+
+    <div>
+    <label>โทรศัพท์</label>
+    <input matInput [(ngModel)]="studentReg.Parent2_addrphone" placeholder="" >
+    </div>
+
+    <div>
+    <label>โทรศัพท์มือถือ</label>
+    <input matInput [(ngModel)]="studentReg.Parent2_addrcellphone" placeholder="" >
+    </div>
+    <br>
+
+    <button mat-raised-button color="primary" style="margin-right: 0.25em" (click)="copyaddrparent2()">คัดลอกอยู่ตามทะเบียนบ้าน</button><br>
+
+    <p>
+    <div>
+    <label>ที่อยู่ปัจจุบันเลขที่</label>
+    <input matInput [(ngModel)]="studentReg.Parent2_addrpresentno" placeholder="" >
+    </div>
+
+    <div>
+    <label>หมู่</label>
+    <input matInput [(ngModel)]="studentReg.Parent2_addrpresentmoo" placeholder="" >
+    </div>
+
+    <div>
+    <label>หมู่บ้าน</label>
+    <input matInput [(ngModel)]="studentReg.Parent2_addrpresentvill" placeholder="" >
+    </div>
+
+    <div>
+    <label>ซอย</label>
+    <input matInput [(ngModel)]="studentReg.Parent2_addrpresentsoi" placeholder="" >
+    </div>
+
+    <div>
+    <label>ถนน</label>
+    <input matInput [(ngModel)]="studentReg.Parent2_addrpresentstreet" placeholder="" >
+    </div>
+    <br>
+
+    <div>
+    <label>แขวง</label>
+    <input matInput [(ngModel)]="studentReg.Parent2_addrpresenttambol" placeholder="" >
+    </div>
+
+    <div>
+    <label>เขต</label>
+    <input matInput [(ngModel)]="studentReg.Parent2_addrpresentamphur" placeholder="" >
+    </div>
+
+    <div>
+    <label>จังหวัด</label>
+    <select [(value)]="parent2PresentProvince">
+        <mat-option *ngFor="let province of provinces" [value]="province">{{province.Name}}</mat-option>
+    </select>
+    </div>
+
+    <div>
+    <label>รหัสไปรษณีย์</label>
+    <input matInput [(ngModel)]="studentReg.Parent2_addrpresentzipcode" placeholder="" >
+    </div>
+    <br>
+
+    <div style="width: 30em">
+    <label>สถานที่ทำงาน</label>
+    <input matInput [(ngModel)]="studentReg.Parent2_office" placeholder="" >
+    </div>
+
+    <div>
+    <label>โทรศัพท์</label>
+    <input matInput [(ngModel)]="studentReg.Parent2_officephone" placeholder="" >
+    </div>
+    <br>
+
+    <div >
+    <label>E-mail</label>
+    <input matInput [(ngModel)]="studentReg.Parent2_email" placeholder="" >
+    </div>
+    <br>
+
+    <div >
+    <label>วุฒิการศึกษา</label>
+    <select [(value)]="parent2Education">
+        <mat-option *ngFor="let edu of educations" [value]="edu">{{edu.Name}}</mat-option>
+    </select>
+    </div>
+
+    <div>
+    <label>ตำแหน่งหน้าที่</label>
+    <input matInput [(ngModel)]="studentReg.Parent2_position" placeholder="" >
+    </div>
+    <br>
+
+    <h3>4. ประวัติผู้ปกครองคนที่ 3 เป็นผู้ที่บิดามารดามอบหมายให้ทำหน้าที่แทนได้และมีความสัมพันธ์กับนักเรียนในฐานะเป็น <mat-checkbox [(ngModel)]="parentCheck3" (change)="parentCheckChanged(3)" style="margin-left: 2em">ผู้ปกครองหลัก</mat-checkbox></h3>
+
+    <img src="data:image/jpeg;base64,{{studentReg.ImgBase64P3}}" alt="" style="width: 240px; height: 300px; border: solid 2px darkgray; margin: 0.5em; padding: 0.25em"/><br/>
+
+    <input type="file" accept="image/*" (change)="getFile3($event)"><br>
+
+    <section>
+        <mat-checkbox [(ngModel)]="studentReg.Parent3_relation1" style="margin-right: 0.5em">เป็นพี่</mat-checkbox>
+        <mat-checkbox [(ngModel)]="studentReg.Parent3_relation2" style="margin-right: 0.5em">เป็นญาติ</mat-checkbox>
+        <div>
+            <label>ระบุ</label>
+            <input matInput [(ngModel)]="studentReg.Parent3_relation" placeholder="" >
+        </div>
+    </section>
+
+    <div>
+        <label>ชื่อ</label>
+        <input matInput [(ngModel)]="studentReg.Parent3_firstname" placeholder="" >
+    </div>
+
+    <div>
+        <label>นามสกุล</label>
+        <input matInput [(ngModel)]="studentReg.Parent3_lastname" placeholder="" >
+    </div>
+
+    <div>
+    <label>อายุ</label>
+    <input matInput [(ngModel)]="parent3Age" placeholder="" >
+    </div>
+    <br>
+
+    <button mat-raised-button color="primary" style="margin-right: 0.25em" (click)="copyStudentAddrToParent3()">คัดลอกอยู่นักเรียน</button><br>
+
+    <p>
+    <div>
+    <label>ที่อยู่ปัจจุบันเลขที่</label>
+    <input matInput [(ngModel)]="studentReg.Parent3_addrpresentno" placeholder="" >
+    </div>
+
+    <div>
+    <label>หมู่</label>
+    <input matInput [(ngModel)]="studentReg.Parent3_addrpresentmoo" placeholder="" >
+    </div>
+
+    <div>
+    <label>หมู่บ้าน</label>
+    <input matInput [(ngModel)]="studentReg.Parent3_addrpresentvill" placeholder="" >
+    </div>
+
+    <div>
+    <label>ซอย</label>
+    <input matInput [(ngModel)]="studentReg.Parent3_addrpresentsoi" placeholder="" >
+    </div>
+    <br>
+
+    <div>
+    <label>ถนน</label>
+    <input matInput [(ngModel)]="studentReg.Parent3_addrpresentstreet" placeholder="" >
+    </div>
+
+    <div>
+    <label>แขวง</label>
+    <input matInput [(ngModel)]="studentReg.Parent3_addrpresenttambol" placeholder="" >
+    </div>
+
+    <div>
+    <label>เขต</label>
+    <input matInput [(ngModel)]="studentReg.Parent3_addrpresentamphur" placeholder="" >
+    </div>
+    <br>
+
+    <div>
+    <label>จังหวัด</label>
+    <select [(value)]="parent3PresentProvince">
+        <mat-option *ngFor="let province of provinces" [value]="province">{{province.Name}}</mat-option>
+    </select>
+    </div>
+
+    <div>
+    <label>รหัสไปรษณีย์</label>
+    <input matInput [(ngModel)]="studentReg.Parent3_addrpresentzipcode" placeholder="" >
+    </div>
+
+    <div>
+    <label>โทรศัพท์</label>
+    <input matInput [(ngModel)]="studentReg.Parent3_addrphone" placeholder="" >
+    </div>
+
+    <div>
+    <label>โทรศัพท์มือถือ</label>
+    <input matInput [(ngModel)]="studentReg.Parent3_addrcellphone" placeholder="" >
+    </div>
+    <br>
+
+    <div style="width: 30em">
+    <label>สถานที่ทำงาน</label>
+    <input matInput [(ngModel)]="studentReg.Parent3_office" placeholder="" >
+    </div>
+
+    <div>
+    <label>โทรศัพท์</label>
+    <input matInput [(ngModel)]="studentReg.Parent3_officephone" placeholder="" >
+    </div>
+    <br>
+
+    <div style="width: 30em">
+    <label>E-mail</label>
+    <input matInput [(ngModel)]="studentReg.Parent3_email" placeholder="" >
+    </div>
+    <br>
+
+    <div >
+    <label>วุฒิการศึกษา</label>
+    <select [(value)]="parent3Education">
+        <mat-option *ngFor="let edu of educations" [value]="edu">{{edu.Name}}</mat-option>
+    </select>
+    </div>
+
+    <div>
+    <label>ตำแหน่งหน้าที่</label>
+    <input matInput [(ngModel)]="studentReg.Parent3_position" placeholder="" >
+    </div>
+    <br>
+
+    <div style="text-align: center;">
+        <button mat-raised-button color="primary" style="margin-right: 0.25em" (click)="printpdf()">พิมพ์แบบฟอร์ม</button>
+    </div>
+
+</div>

@@ -1,0 +1,88 @@
+<div class="main-content">
+    
+    <div class="container-fluid">
+
+        <div id="group_frm">
+
+            <div class="card">
+
+                <div class="card-body">
+
+                    <div class="row mt-1">
+                        <div class="col-4">
+                            <label class="label label-default">หมวดวิชา</label>
+                            <input type="text" class="form-control" [(ngModel)]="subjectgroup.Name">
+                        </div>
+                    </div>
+
+                    <div class="row mt-1">
+                        <div class="col">
+                            <button type="button" class="btn btn-primary" (click)="save()">บันทึก</button>
+                            <button type="button" class="btn btn-default ml-1" (click)="setEdit(false)">ออก</button>
+                        </div>
+
+                        <div class="col align-self-end text-right">
+                            <button type="button" class="btn btn-danger ml-1" (click)="del()">ลบ</button>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div id="group_view">
+
+            <div class="card">
+
+                <div class="card-body">
+
+                    <div class="toolbar">
+                        <!--        Here you can write extra buttons/actions for the toolbar              -->
+
+                        <div class="row">
+                            <div class="col align-self-end text-right">
+                                <button class="btn btn-success" (click)="insert()">
+                                    <span class="nc-icon nc-simple-add" aria-hidden="true"></span> 
+                                    เพิ่มหมวดวิชา
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <table id="subjectgrouptable" class="table display">
+                        <caption></caption>
+
+                        <thead>
+                            <tr>
+                                <th scope="col" style="width: 10em;">{{ dataTable.headerRow[0] }}</th>
+                            </tr>
+                        </thead>
+
+                        <tfoot>
+                            <tr>
+                                <th scope="col">{{ dataTable.footerRow[0] }}</th>
+                            </tr>
+                        </tfoot>
+
+                        <tbody>
+                            <tr *ngFor="let row of dataTable.dataRows" class="row-data">
+                                <td>{{row[0]}}</td>
+                            </tr>
+                        </tbody>
+                        
+                    </table>
+
+                </div>
+
+            </div>
+            <!-- end content-->
+
+        </div>
+        <!--  end card  -->
+
+    </div>
+
+</div>

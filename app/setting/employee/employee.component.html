@@ -1,0 +1,45 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+                
+                <div *ngIf="edited; else viewBlock">
+                    <app-grade-form (grades)="handleGrades($event)" [grade]="grade"></app-grade-form>
+                </div>
+
+                <ng-template #viewBlock>
+
+                    <div class="mb-3">
+                        <mat-form-field style="width: 20em; margin-right: 0.5em">
+                            <mat-label> ค้นหา </mat-label>
+                            <input matInput [(ngModel)]="txtsearch" placeholder="ระดับชั้น" />
+                        </mat-form-field>
+
+                        <button mat-raised-button color="primary" (click)="insert()">
+                            <mat-icon>add</mat-icon>
+                            เพิ่มข้อมูล
+                        </button>
+                    </div>
+
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col" style="width: 10em; text-align: center;">ลำดับ</th>
+                                <th scope="col">ระดับชั้น</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr *ngFor="let grade of grades" style="cursor: pointer;" (click)="clickRow(grade)">
+                                <td style="text-align: center;">{{grade.OrderNo}}</td>
+                                <td>{{grade.Name}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </ng-template>
+
+            </div>
+        </div>
+    </div>
+</div>

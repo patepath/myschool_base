@@ -1,0 +1,64 @@
+<div class="container-fluid">
+    
+    <div class="row">
+    
+        <div class="col-4">
+
+            <table class="table table-hover">
+
+                <tbody>
+
+                    <tr>
+                        <td style="font-weight: bold;">รหัสนักเรียน :</td>
+                        <td>{{report.Code}}</td>
+                    </tr>
+
+                    <tr>
+                        <td style="font-weight: bold;">ชื่อ-นามสกุล :</td>
+                        <td>{{report.Title}} {{report.FullName}}</td>
+                    </tr>
+                    
+                    <tr>
+                        <td style="font-weight: bold;">ชั้น :</td>
+                        <td>{{report.Grade + "/" + report.Room}}</td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+            <p>
+            <button class="btn btn-default" style="margin-right: 0.5em" (click)="exportExcel()" disabled="true">
+                Export Excel
+            </button>
+
+            <button class="btn btn-default" style="margin-right: 0.5em" (click)="exportExcel()" disabled="true">
+                Print
+            </button>
+
+            <button class="btn btn-default" style="margin-right: 0.5em" (click)="close()" >
+                Close
+            </button>
+
+        </div>
+
+        <div>
+            <img [src]="imagepath" alt="" style="width: 120px; height: 150px; border: solid 2px darkgray; margin: 0.5em; padding: 0.25em"/><br/>
+        </div>
+
+    </div>
+
+</div>
+
+<table class="table" style="width: 60%;" >
+    <tr>
+        <th scope="col" style="width: 6em; text-align: center;">ลำดับ</th>
+        <th scope="col">รายละเอียด</th>
+        <th scope="col" style="width: 6em; text-align: center;">คะแนน</th>
+    </tr>
+    <tr *ngFor="let col of studentbehaviors">
+        <td style="text-align: center;">{{col.No}}</td>
+        <td>{{col.Description}}</td>
+        <td style="text-align: center;">{{col.Point}}</td>
+    </tr>
+</table>

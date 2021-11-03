@@ -1,0 +1,186 @@
+
+<div class="main-content">
+
+    <div class="container-fluid">
+
+        <div id="user_frm">
+
+            <div class="card">
+
+                <form #userfrm="ngForm" >
+
+                    <div class="card-body">
+
+                        <div class="row mb-2">
+
+                            <div class="col-2">
+                                <label for="name">ชื่อผู้ใช้งาน</label>
+                                <input type="text" name="name" [(ngModel)]="user.Name" #name="ngModel" class="form-control" required autocomplete="off">
+                                <small [hidden]="this.isValid" class="text-danger">ต้องใส่</small>
+                            </div>
+
+                            <div class="col-2">
+                                <label>บัตรประชาชน</label>
+                                <input type="text" name="idcard" #idcard="ngModel" [(ngModel)]="user.IdCard" class="form-control"/>
+                            </div>
+
+                        </div>
+
+                        <div class="row mb-2">
+
+                            <div class="col-4">
+                                <label for="fullname">ชื่อ-นามสกุล</label>
+                                <input type="text" name="Fullname" [(ngModel)]="user.Fullname" #fullname="ngModel" class="form-control">
+                            </div>
+
+                        </div>
+
+                        <div class="row mb-2">
+
+                            <div class="col-2">
+                                <label for="password1">รหัสผ่าน</label>
+                                <input type="password" name="password1" [(ngModel)]="password1" class="form-control" autocomplete="new-password" >
+                                <small [hidden]="this.passwordValid" class="text-danger">รหัสผ่านไม่ตรงกัน</small>
+                            </div>
+
+                            <div class="col-2">
+                                <label class="form-label" for="password2">ยืนยันรหัสผ่าน</label>
+                                <input type="password" name="password2" [(ngModel)]="password2"  class="form-control" autocomplete="new-password" >
+                            </div>
+
+                        </div>
+
+                        <div class="row mb-3">
+
+                            <div class="col-2">
+                                <label class="form-label" for="role">บทบาท</label>
+                                <select name="role"  [(ngModel)]="user.Role" #role="ngModel" class="form-select">
+                                    <option value="admin">Admin</option>
+                                    <option value="teacher">Teacher</option>
+                                    <option value="employee">Employee</option>
+                                    <option value="parent">Parent</option>
+                                    <option value="student">Student</option>
+                                </select>
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+                            <div class="col-auto">
+                                <button type="button" class="btn btn-success mr-2" (click)="save()" [disabled]="!this.isValid || !this.passwordValid">
+                                    <span class="fa fa-floppy-o"></span>
+                                    บันทึก
+                                </button>
+
+                                <button class="btn btn-default mr-2" (click)="close()">
+                                    <span class="fa fa-window-close"></span>
+                                    ออก
+                                </button>
+                            </div>
+
+                            <div class="col align-self-end text-right">
+                                <button class="btn btn-danger mr-2" (click)="remove()">
+                                    <span class="fa fa-close"></span>
+                                    ลบ
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+            <div id="student-frm" style="display: none;">
+
+                <div class="row mb-3">
+                    
+                    <div class="col-2">
+                    <label>ชั้นเรียน</label> 
+                    <select class="form-control" [(ngModel)]="grade_ref" >
+                            <option value="0">- ทุกระดับชั้น -</option>
+                            <option *ngFor="let opt of grades" [ngValue]="opt.value">{{opt.Name}}</option>
+                    </select>
+                    </div>
+
+                </div>
+
+                <button type="button" class="btn btn-success" (click)="registerstudent()">
+                    ลงทะเบียนนักเรียน
+                </button>
+
+                <button type="button" class="btn btn-default ml-2" (click)="subformclose()">
+                    ออก
+                </button>
+
+            </div>
+
+        </div>
+
+        <div id="user_view">
+
+
+            <div class="card">
+
+                <div class="card-body">
+
+                    <div class="toolbar">
+                        <!--        Here you can write extra buttons/actions for the toolbar              -->
+
+                        <div class="row">
+                            <div class="col align-self-end text-right">
+                                <button type="button" class="btn btn-success mr-2" (click)="insert()">
+                                    <span class="fa fa-plus" aria-hidden="true"></span> 
+                                    เพิ่มผู้ใช้งาน
+                                </button>
+
+                                <button type="button" class="btn btn-warning" (click)="registerfromstudent()">
+                                    <span class="fa fa-address-card-o" aria-hidden="true"></span> 
+                                    เพิ่มผู้ใช้งานจากข้อมูลนักเรียน
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <table id="userTable" class="table table-striped table-bordered">
+                        <caption></caption>
+
+                        <thead>
+                            <tr>
+                                <th scope="col">{{ dataTable.headerRow[0] }}</th>
+                                <th scope="col">{{ dataTable.headerRow[1] }}</th>
+                                <th scope="col">{{ dataTable.headerRow[2] }}</th>
+                            </tr>
+                        </thead>
+
+                        <tfoot>
+                            <tr>
+                                <th scope="col">{{ dataTable.footerRow[0] }}</th>
+                                <th scope="col">{{ dataTable.footerRow[1] }}</th>
+                                <th scope="col">{{ dataTable.footerRow[2] }}</th>
+                            </tr>
+                        </tfoot>
+
+                        <tbody>
+                            <tr *ngFor="let row of dataTable.dataRows">
+                                <td>{{row[0]}}</td>
+                                <td>{{row[1]}}</td>
+                                <td>{{row[2]}}</td>
+                            </tr>
+                        </tbody>
+                        
+                    </table>
+
+                </div>
+
+            </div>
+            <!-- end content-->
+
+        </div>
+        <!--  end card  -->
+
+    </div>
+
+</div>

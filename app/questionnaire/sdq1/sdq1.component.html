@@ -1,0 +1,387 @@
+<div id="main" class="main-content">
+
+    <div class="container">
+
+        <div class="card">
+
+            <div class="card-body">
+            
+                <div id="sdq_frm">
+
+                    <h3>แบบประเมินพฤติกรรมนักเรียน (ฉบับครูประเมินนักเรียน)</h3>
+                    <h3>Strengths and Difficulties Questionnaire (SDQ)</h3>
+
+                    <div class="row">
+
+                        <div class="col-2">
+                            <label>รหัสนักเรียน</label>
+                            <input type="text" class="form-control" [(ngModel)]="sdq.Code" (keyup)="codechange()"/>
+                        </div>
+
+                        <div class="col-2">
+                            <label>เลขที่</label>
+                            <input type="text" class="form-control" [(ngModel)]="no" disabled="true"/>
+                        </div>
+
+                        <div class="col-4">
+                            <label>ชื่อ-นามสกุล</label>
+                            <input type="text" class="form-control" [(ngModel)]="fullname" disabled="true"/>
+                        </div>
+
+                    </div>
+
+                    <div class="row mt-2">
+
+                        <div class="col-2">
+                            <label>ระดับชั้น</label>
+                            <input type="text" class="form-control" [(ngModel)]="grade" disabled="true"/>
+                        </div>
+
+                        <div class="col-2">
+                            <label>ห้อง</label>
+                            <input type="text" class="form-control" [(ngModel)]="room" disabled="true"/>
+                        </div>
+
+                    </div>
+
+                    <h3 class="mt-3">ส่วนที่ 1</h3>
+                    <h4>ทำเครื่องหมาย / ในช่องว่างเพียงช่องเดียว ในแต่ละข้อคำถามที่ใกล้เคียงกับพฤติกรรมของนักเรียนที่เกิดขึ้นในช่วง 6 เดือนที่ผ่านมา</h4>
+
+                    <table class="table">
+
+                        <caption></caption>
+
+                        <thead>
+                            <th scope="col">ข้อ</th>
+                            <th scope="col">พฤติกรรมประเมิณ</th>
+                            <th scope="col">ไม่จริง</th>
+                            <th scope="col">จริงบ้าง</th>
+                            <th scope="col">จริง</th>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>ใส่ใจกับความรู้สึกคนอื่น</td>
+                                <td><input type="radio" name="this.sdq.Topic1_1" [(ngModel)]="this.sdq.Topic1_1" [value]="1"></td>
+                                <td><input type="radio" name="this.sdq.Topic1_1" [(ngModel)]="this.sdq.Topic1_1" [value]="2"></td>
+                                <td><input type="radio" name="this.sdq.Topic1_1" [(ngModel)]="this.sdq.Topic1_1" [value]="3"></td>
+                            </tr>
+
+                            <tr>
+                                <td>2</td>
+                                <td>อยู่ไม่สุข เคลื่อนไหวมาก ไม่สามารถอยู่นิ่งได้นานๆ</td>
+                                <td><input type="radio" name="this.sdq.Topic1_2" [(ngModel)]="this.sdq.Topic1_2" [value]="1"></td>
+                                <td><input type="radio" name="this.sdq.Topic1_2" [(ngModel)]="this.sdq.Topic1_2" [value]="2"></td>
+                                <td><input type="radio" name="this.sdq.Topic1_2" [(ngModel)]="this.sdq.Topic1_2" [value]="3"></td>
+                            </tr>
+
+                            <tr>
+                                <td>3</td>
+                                <td>บ่นปวดศรีษะ ปวดท้อง หรือคลื่นไส้บ่อยๆ</td>
+                                <td><input type="radio" name="this.sdq.Topic1_3" [(ngModel)]="this.sdq.Topic1_3" [value]="1"></td>
+                                <td><input type="radio" name="this.sdq.Topic1_3" [(ngModel)]="this.sdq.Topic1_3" [value]="2"></td>
+                                <td><input type="radio" name="this.sdq.Topic1_3" [(ngModel)]="this.sdq.Topic1_3" [value]="3"></td>
+                            </tr>
+
+                            <tr>
+                                <td>4</td>
+                                <td>เต็มใจแบ่งปันกับคนอื่น (ขนม ของเล่น ดินสอ ฯลฯ)</td>
+                                <td><input type="radio" name="this.sdq.Topic1_4" [(ngModel)]="this.sdq.Topic1_4" [value]="1"></td>
+                                <td><input type="radio" name="this.sdq.Topic1_4" [(ngModel)]="this.sdq.Topic1_4" [value]="2"></td>
+                                <td><input type="radio" name="this.sdq.Topic1_4" [(ngModel)]="this.sdq.Topic1_4" [value]="3"></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>5</td>
+                                <td>แผลงฤทธิ์บ่อยๆ หรืออารมย์ร้อน</td>
+                                <td><input type="radio" name="this.sdq.Topic1_5" [(ngModel)]="this.sdq.Topic1_5" [value]="1"></td>
+                                <td><input type="radio" name="this.sdq.Topic1_5" [(ngModel)]="this.sdq.Topic1_5" [value]="2"></td>
+                                <td><input type="radio" name="this.sdq.Topic1_5" [(ngModel)]="this.sdq.Topic1_5" [value]="3"></td>
+                            </tr>
+
+                            <tr>
+                                <td>6</td>
+                                <td>ค่อนข้างอยู่โดดเดี่ยวมักเล่นตามลำพัง</td>
+                                <td><input type="radio" name="this.sdq.Topic1_6" [(ngModel)]="this.sdq.Topic1_6" [value]="1"></td>
+                                <td><input type="radio" name="this.sdq.Topic1_6" [(ngModel)]="this.sdq.Topic1_6" [value]="2"></td>
+                                <td><input type="radio" name="this.sdq.Topic1_6" [(ngModel)]="this.sdq.Topic1_6" [value]="3"></td>
+                            </tr>
+
+                            <tr>
+                                <td>7</td>
+                                <td>โดยปกติแล้วเชือฟัง ทำตามที่ผู้ใหญ่บอก</td>
+                                <td><input type="radio" name="this.sdq.Topic1_7" [(ngModel)]="this.sdq.Topic1_7" [value]="1"></td>
+                                <td><input type="radio" name="this.sdq.Topic1_7" [(ngModel)]="this.sdq.Topic1_7" [value]="2"></td>
+                                <td><input type="radio" name="this.sdq.Topic1_7" [(ngModel)]="this.sdq.Topic1_7" [value]="3"></td>
+                            </tr>
+
+                            <tr>
+                                <td>8</td>
+                                <td>มีความกังวลหลายเรื่อง ดูเหมือนกังวลบ่อย</td>
+                                <td><input type="radio" name="this.sdq.Topic1_8" [(ngModel)]="this.sdq.Topic1_8" [value]="1"></td>
+                                <td><input type="radio" name="this.sdq.Topic1_8" [(ngModel)]="this.sdq.Topic1_8" [value]="2"></td>
+                                <td><input type="radio" name="this.sdq.Topic1_8" [(ngModel)]="this.sdq.Topic1_8" [value]="3"></td>
+                            </tr>
+
+                            <tr>
+                                <td>9</td>
+                                <td>ช่วยเหลือถ้ามีใครบาดเจ็บ ไม่สบายใจหรือเจ็บป่วย</td>
+                                <td><input type="radio" name="this.sdq.Topic1_9" [(ngModel)]="this.sdq.Topic1_9" [value]="1"></td>
+                                <td><input type="radio" name="this.sdq.Topic1_9" [(ngModel)]="this.sdq.Topic1_9" [value]="2"></td>
+                                <td><input type="radio" name="this.sdq.Topic1_9" [(ngModel)]="this.sdq.Topic1_9" [value]="3"></td>
+                            </tr>
+
+                            <tr>
+                                <td>10</td>
+                                <td>หยุกหยิก หรือดิ้นไปดิ้นมาตลอดเวลา</td>
+                                <td><input type="radio" name="this.sdq.Topic1_10" [(ngModel)]="this.sdq.Topic1_10" [value]="1"></td>
+                                <td><input type="radio" name="this.sdq.Topic1_10" [(ngModel)]="this.sdq.Topic1_10" [value]="2"></td>
+                                <td><input type="radio" name="this.sdq.Topic1_10" [(ngModel)]="this.sdq.Topic1_10" [value]="3"></td>
+                            </tr>
+
+                            <tr>
+                                <td>11</td>
+                                <td>มีเพื่อนสนิทอย่างน้อยหนึ่งคน</td>
+                                <td><input type="radio" name="this.sdq.Topic1_11" [(ngModel)]="this.sdq.Topic1_11" [value]="1"></td>
+                                <td><input type="radio" name="this.sdq.Topic1_11" [(ngModel)]="this.sdq.Topic1_11" [value]="2"></td>
+                                <td><input type="radio" name="this.sdq.Topic1_11" [(ngModel)]="this.sdq.Topic1_11" [value]="3"></td>
+                            </tr>
+
+                            <tr>
+                                <td>12</td>
+                                <td>มีเรื่องทะเลาะหรือรังแกคนอื่นบ่อยๆ</td>
+                                <td><input type="radio" name="this.sdq.Topic1_12" [(ngModel)]="this.sdq.Topic1_12" [value]="1"></td>
+                                <td><input type="radio" name="this.sdq.Topic1_12" [(ngModel)]="this.sdq.Topic1_12" [value]="2"></td>
+                                <td><input type="radio" name="this.sdq.Topic1_12" [(ngModel)]="this.sdq.Topic1_12" [value]="3"></td>
+                            </tr>
+
+                            <tr>
+                                <td>13</td>
+                                <td>ไม่มีความสุข</td>
+                                <td><input type="radio" name="this.sdq.Topic1_13" [(ngModel)]="this.sdq.Topic1_13" [value]="1"></td>
+                                <td><input type="radio" name="this.sdq.Topic1_13" [(ngModel)]="this.sdq.Topic1_13" [value]="2"></td>
+                                <td><input type="radio" name="this.sdq.Topic1_13" [(ngModel)]="this.sdq.Topic1_13" [value]="3"></td>
+                            </tr>
+
+                            <tr>
+                                <td>14</td>
+                                <td>โดยทั่วไปเป็นที่ชอบพอของคนอื่น</td>
+                                <td><input type="radio" name="this.sdq.Topic1_14" [(ngModel)]="this.sdq.Topic1_14" [value]="1"></td>
+                                <td><input type="radio" name="this.sdq.Topic1_14" [(ngModel)]="this.sdq.Topic1_14" [value]="2"></td>
+                                <td><input type="radio" name="this.sdq.Topic1_14" [(ngModel)]="this.sdq.Topic1_14" [value]="3"></td>
+                            </tr>
+
+                            <tr>
+                                <td>15</td>
+                                <td>วอกแวกง่ายไม่มีสมาธิ</td>
+                                <td><input type="radio" name="this.sdq.Topic1_15" [(ngModel)]="this.sdq.Topic1_15" [value]="1"></td>
+                                <td><input type="radio" name="this.sdq.Topic1_15" [(ngModel)]="this.sdq.Topic1_15" [value]="2"></td>
+                                <td><input type="radio" name="this.sdq.Topic1_15" [(ngModel)]="this.sdq.Topic1_15" [value]="3"></td>
+                            </tr>
+
+                            <tr>
+                                <td>16</td>
+                                <td>วิตกหรือติดแจเมื่ออยู่ในสถานการณ์ใหม่ เสียความมั่นใจง่าย</td>
+                                <td><input type="radio" name="this.sdq.Topic1_16" [(ngModel)]="this.sdq.Topic1_16" [value]="1"></td>
+                                <td><input type="radio" name="this.sdq.Topic1_16" [(ngModel)]="this.sdq.Topic1_16" [value]="2"></td>
+                                <td><input type="radio" name="this.sdq.Topic1_16" [(ngModel)]="this.sdq.Topic1_16" [value]="3"></td>
+                            </tr>
+
+                            <tr>
+                                <td>17</td>
+                                <td>ใจดีกับเด็กที่มีอายุน้อยกว่า</td>
+                                <td><input type="radio" name="this.sdq.Topic1_17" [(ngModel)]="this.sdq.Topic1_17" [value]="1"></td>
+                                <td><input type="radio" name="this.sdq.Topic1_17" [(ngModel)]="this.sdq.Topic1_17" [value]="2"></td>
+                                <td><input type="radio" name="this.sdq.Topic1_17" [(ngModel)]="this.sdq.Topic1_17" [value]="3"></td>
+                            </tr>
+
+                            <tr>
+                                <td>18</td>
+                                <td>พูดปดหรือขี้โกงบ่อยๆ</td>
+                                <td><input type="radio" name="this.sdq.Topic1_18" [(ngModel)]="this.sdq.Topic1_18" [value]="1"></td>
+                                <td><input type="radio" name="this.sdq.Topic1_18" [(ngModel)]="this.sdq.Topic1_18" [value]="2"></td>
+                                <td><input type="radio" name="this.sdq.Topic1_18" [(ngModel)]="this.sdq.Topic1_18" [value]="3"></td>
+                            </tr>
+
+                            <tr>
+                                <td>19</td>
+                                <td>ถูกเด็กคนอื่นๆแกล้งหรือรังแก</td>
+                                <td><input type="radio" name="this.sdq.Topic2_19" [(ngModel)]="this.sdq.Topic1_19" [value]="1"></td>
+                                <td><input type="radio" name="this.sdq.Topic2_19" [(ngModel)]="this.sdq.Topic1_19" [value]="2"></td>
+                                <td><input type="radio" name="this.sdq.Topic2_19" [(ngModel)]="this.sdq.Topic1_19" [value]="3"></td>
+                            </tr>
+
+                            <tr>
+                                <td>20</td>
+                                <td>มักอาสาช่วยเหลือผู้อื่น (พ่อ แม่ ครู เด็กคนอื่นๆ)</td>
+                                <td><input type="radio" name="this.sdq.Topic2_20" [(ngModel)]="this.sdq.Topic1_20" [value]="1"></td>
+                                <td><input type="radio" name="this.sdq.Topic2_20" [(ngModel)]="this.sdq.Topic1_20" [value]="2"></td>
+                                <td><input type="radio" name="this.sdq.Topic2_20" [(ngModel)]="this.sdq.Topic1_20" [value]="3"></td>
+                            </tr>
+
+                            <tr>
+                                <td>21</td>
+                                <td>คิดก่อนทำ</td>
+                                <td><input type="radio" name="this.sdq.Topic2_21" [(ngModel)]="this.sdq.Topic1_21" [value]="1"></td>
+                                <td><input type="radio" name="this.sdq.Topic2_21" [(ngModel)]="this.sdq.Topic1_21" [value]="2"></td>
+                                <td><input type="radio" name="this.sdq.Topic2_21" [(ngModel)]="this.sdq.Topic1_21" [value]="3"></td>
+                            </tr>
+
+                            <tr>
+                                <td>22</td>
+                                <td>ขโมยของที่บ้าน ที่โรงเรียน หรือที่อื่นๆ</td>
+                                <td><input type="radio" name="this.sdq.Topic2_22" [(ngModel)]="this.sdq.Topic1_22" [value]="1"></td>
+                                <td><input type="radio" name="this.sdq.Topic2_22" [(ngModel)]="this.sdq.Topic1_22" [value]="2"></td>
+                                <td><input type="radio" name="this.sdq.Topic2_22" [(ngModel)]="this.sdq.Topic1_22" [value]="3"></td>
+                            </tr>
+
+                            <tr>
+                                <td>23</td>
+                                <td>เข้ากับผู้ใหญ่ได้ดีกว่าเด็กอื่น</td>
+                                <td><input type="radio" name="this.sdq.Topic2_23" [(ngModel)]="this.sdq.Topic1_23" [value]="1"></td>
+                                <td><input type="radio" name="this.sdq.Topic2_23" [(ngModel)]="this.sdq.Topic1_23" [value]="2"></td>
+                                <td><input type="radio" name="this.sdq.Topic2_23" [(ngModel)]="this.sdq.Topic1_23" [value]="3"></td>
+                            </tr>
+
+                            <tr>
+                                <td>24</td>
+                                <td>มีความกลัวหลายเรื่อง หวาดกลัวง่าย</td>
+                                <td><input type="radio" name="this.sdq.Topic2_24" [(ngModel)]="this.sdq.Topic1_24" [value]="1"></td>
+                                <td><input type="radio" name="this.sdq.Topic2_24" [(ngModel)]="this.sdq.Topic1_24" [value]="2"></td>
+                                <td><input type="radio" name="this.sdq.Topic2_24" [(ngModel)]="this.sdq.Topic1_24" [value]="3"></td>
+                            </tr>
+
+                            <tr>
+                                <td>25</td>
+                                <td>มีสมาธิในการติดตามทำงานจนเสร็จ</td>
+                                <td><input type="radio" name="this.sdq.Topic2_25" [(ngModel)]="this.sdq.Topic1_25" [value]="1"></td>
+                                <td><input type="radio" name="this.sdq.Topic2_25" [(ngModel)]="this.sdq.Topic1_25" [value]="2"></td>
+                                <td><input type="radio" name="this.sdq.Topic2_25" [(ngModel)]="this.sdq.Topic1_25" [value]="3"></td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                    <h3>ส่วนที่ 2</h3>
+                    <h4>ทำเครื่องหมาย / ในช่องว่างเพียงช่องเดียว ในแต่ละข้อคำถามที่ใกล้เคียงกับพฤติกรรมของนักเรียน</h4>
+                    
+                    <div class="mt-3">
+
+                        โดยรวมคุณคิดว่านักเรียนมีปัญหาในด้านอารมย์ ด้านสมาธิ ด้านพฤติกรรมหรือความสามารเข้ากับผู้อื่น ด้านใดด้านหนึ่งหรือไม่
+
+                        <div class="mt-2">
+                            <div class="mt-1"><input type="radio" name="this.sdq.Topic2" [(ngModel)]="this.sdq.Topic2" [value]="1"> ไม่มีปัญหา</div>
+                            <div class="mt-1"><input type="radio" name="this.sdq.Topic2" [(ngModel)]="this.sdq.Topic2" [value]="2"> มีปัญหาเล็กน้อย</div>
+                            <div class="mt-1"><input type="radio" name="this.sdq.Topic2" [(ngModel)]="this.sdq.Topic2" [value]="3"> มีปัญหาชัดเจน</div>
+                            <div class="mt-1"><input type="radio" name="this.sdq.Topic2" [(ngModel)]="this.sdq.Topic2" [value]="4"> มีปัญหารุนแรง</div>
+                        </div>
+
+                    </div>
+                
+                    <div *ngIf="this.sdq.Topic2 > 1">
+
+                        <div class="mt-4">
+
+                            <h6><u>หมายเหตุ</u> ถ้าคุณตอบ "มีปัญหา" โปรดตอบข้อ 2.1 - 2.4 ต่อไปนี้ด้วย</h6>
+
+                            2.1) ปัญหาที่มี เกิดมานานเท่าไหร่แล้ว
+
+                            <div class="mt-2">
+                                <div class="mt-1"><input type="radio" name="this.sdq.Topic2_1" [(ngModel)]="this.sdq.Topic2_1" [value]="1"> น้อยกว่า 1 เดือน</div>
+                                <div class="mt-1"><input type="radio" name="this.sdq.Topic2_1" [(ngModel)]="this.sdq.Topic2_1" [value]="2"> 1 - 5 เดือน</div>
+                                <div class="mt-1"><input type="radio" name="this.sdq.Topic2_1" [(ngModel)]="this.sdq.Topic2_1" [value]="3"> 6 - 12 เดือน</div>
+                                <div class="mt-1"><input type="radio" name="this.sdq.Topic2_1" [(ngModel)]="this.sdq.Topic2_1" [value]="4"> มากกว่า 1 ปี</div>
+                            </div>
+
+                        </div>
+
+                        <div class="mt-4">
+
+                            2.2) นักเรียนรรุู้สึกหงุดหงิดหรือไม่สบายใจกับปัญหาที่มีหรือไม่
+
+                            <div class="mt-2">
+                                <div class="mt-1"><input type="radio" name="this.sdq.Topic2_2" [(ngModel)]="this.sdq.Topic2_2" [value]="1"> ไม่เลย</div>
+                                <div class="mt-1"><input type="radio" name="this.sdq.Topic2_2" [(ngModel)]="this.sdq.Topic2_2" [value]="2"> เล็กน้อย</div>
+                                <div class="mt-1"><input type="radio" name="this.sdq.Topic2_2" [(ngModel)]="this.sdq.Topic2_2" [value]="3"> ค่อนข้างมาก</div>
+                                <div class="mt-1"><input type="radio" name="this.sdq.Topic2_2" [(ngModel)]="this.sdq.Topic2_2" [value]="4"> มากที่สุด</div>
+                            </div>
+
+                        </div>
+
+                        <div class="mt-4">
+
+                            2.3) ปัญหาที่มี รบกวนชีวิตประจำวันของนักเรียนในด้านต่างๆ ต่อไปนี้หรือไม่
+
+                            <div class="mt-2">
+
+                                <div style="font-weight: bold; ">(1) ความเป็นอยู่ที่บ้าน</div>
+
+                                <div class="mt-2">
+                                    <div class="mt-1"><input type="radio" name="this.sdq.Topic2_3" [(ngModel)]="this.sdq.Topic2_3" [value]="1"> ไม่เลย</div>
+                                    <div class="mt-1"><input type="radio" name="this.sdq.Topic2_3" [(ngModel)]="this.sdq.Topic2_3" [value]="2"> เล็กน้อย</div>
+                                    <div class="mt-1"><input type="radio" name="this.sdq.Topic2_3" [(ngModel)]="this.sdq.Topic2_3" [value]="3"> ค่อนข้างมาก</div>
+                                    <div class="mt-1"><input type="radio" name="this.sdq.Topic2_3" [(ngModel)]="this.sdq.Topic2_3" [value]="4"> มากที่สุด</div>
+                                </div>
+
+                                <div class="mt-3" style="font-weight: bold; ">(2) การคบเพื่อน</div>
+
+                                <div class="mt-2">
+                                    <div class="mt-1"><input type="radio" name="this.sdq.Topic2_4" [(ngModel)]="this.sdq.Topic2_4" [value]="1"> ไม่เลย</div>
+                                    <div class="mt-1"><input type="radio" name="this.sdq.Topic2_4" [(ngModel)]="this.sdq.Topic2_4" [value]="2"> เล็กน้อย</div>
+                                    <div class="mt-1"><input type="radio" name="this.sdq.Topic2_4" [(ngModel)]="this.sdq.Topic2_4" [value]="3"> ค่อนข้างมาก</div>
+                                    <div class="mt-1"><input type="radio" name="this.sdq.Topic2_4" [(ngModel)]="this.sdq.Topic2_4" [value]="4"> มากที่สุด</div>
+                                </div>
+
+                                <div class="mt-3" style="font-weight: bold; ">(3) การเรียนในห้องเรียน</div>
+
+                                <div class="mt-2">
+                                    <div class="mt-1"><input type="radio" name="this.sdq.Topic2_5" [(ngModel)]="this.sdq.Topic2_5" [value]="1"> ไม่เลย</div>
+                                    <div class="mt-1"><input type="radio" name="this.sdq.Topic2_5" [(ngModel)]="this.sdq.Topic2_5" [value]="2"> เล็กน้อย</div>
+                                    <div class="mt-1"><input type="radio" name="this.sdq.Topic2_5" [(ngModel)]="this.sdq.Topic2_5" [value]="3"> ค่อนข้างมาก</div>
+                                    <div class="mt-1"><input type="radio" name="this.sdq.Topic2_5" [(ngModel)]="this.sdq.Topic2_5" [value]="4"> มากที่สุด</div>
+                                </div>
+
+                                <div class="mt-3" style="font-weight: bold; ">(4) กิจกรรมยามว่าง</div>
+
+                                <div class="mt-2">
+                                    <div class="mt-1"><input type="radio" name="this.sdq.Topic2_6" [(ngModel)]="this.sdq.Topic2_6" [value]="1"> ไม่เลย</div>
+                                    <div class="mt-1"><input type="radio" name="this.sdq.Topic2_6" [(ngModel)]="this.sdq.Topic2_6" [value]="2"> เล็กน้อย</div>
+                                    <div class="mt-1"><input type="radio" name="this.sdq.Topic2_6" [(ngModel)]="this.sdq.Topic2_6" [value]="3"> ค่อนข้างมาก</div>
+                                    <div class="mt-1"><input type="radio" name="this.sdq.Topic2_6" [(ngModel)]="this.sdq.Topic2_6" [value]="4"> มากที่สุด</div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="mt-4">
+
+                            2.4) ปัญหาที่มี ทำให้คุณหรือครอบครัวเกิดความวุ่นวายหรือไม่
+
+                            <div class="mt-2">
+                                <div class="mt-1"><input type="radio" name="this.sdq.Topic2_7" [(ngModel)]="this.sdq.Topic2_7" [value]="1"> ไม่เลย</div>
+                                <div class="mt-1"><input type="radio" name="this.sdq.Topic2_7" [(ngModel)]="this.sdq.Topic2_7" [value]="2"> เล็กน้อย</div>
+                                <div class="mt-1"><input type="radio" name="this.sdq.Topic2_7" [(ngModel)]="this.sdq.Topic2_7" [value]="3"> ค่อนข้างมาก</div>
+                                <div class="mt-1"><input type="radio" name="this.sdq.Topic2_7" [(ngModel)]="this.sdq.Topic2_7" [value]="4"> มากที่สุด</div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div style="text-align: center;">
+                        <button class="btn btn-defatult" (click)="submitform()">คำนวณคะแนน/บันทึก</button>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+</div>

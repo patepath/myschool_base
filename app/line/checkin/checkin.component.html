@@ -1,0 +1,70 @@
+<div class="container-fluid">
+
+    <div class="row mt-5">
+
+        <div class="col">
+            <label class="form-label">ระดับชั้น</label>
+            <select class="form-select" [(ngModel)]="grade_ref" (click)="gradeChange()">
+                <option *ngFor="let opt of grades" [ngValue]="opt.Ref">{{opt.Name}}</option>
+            </select>
+        </div>
+
+    </div>
+
+    <div class="row mt-2">
+
+        <div class="col">
+            <label class="form-label">ห้อง</label>
+            <select class="form-select" [(ngModel)]="room_ref" >
+                <option *ngFor="let opt of rooms" [ngValue]="opt.Ref">{{opt.Name}}</option>
+            </select>
+        </div>
+
+    </div>
+
+    <div class="text-center mt-2">
+        <button type="button" class="btn btn-info">จ.</button>
+        <button type="button" class="btn btn-info">อ.</button>
+        <button type="button" class="btn btn-info">พ.</button>
+        <button type="button" class="btn btn-info">พฤ.</button>
+        <button type="button" class="btn btn-info">ศ.</button>
+    </div>
+
+    <div class="row mb-2">
+
+        <div class="col">
+            <label class="form-label">วิชา</label>
+            <select class="form-select" [(ngModel)]="dept_ref">
+                <option *ngFor="let opt of depts" [ngValue]="opt.Ref">{{opt.Name}}</option>
+            </select>
+        </div>
+
+    </div>
+
+    <div class="row mt-3">
+        <label class="form-label">บันทึกการสอน</label>
+        <textarea class="form-control" rows="8"></textarea>
+    </div>
+
+    <table class="table table-striped table-bordered mt-3">
+
+        <thead>
+            <tr>
+                <th scope="col">เลขที่</th>
+                <th scope="col">ชื่อ-นามสกุล</th>
+                <th scope="col">สถานะ</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+
+    </table>
+
+
+</div>

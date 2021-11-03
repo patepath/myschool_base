@@ -1,0 +1,37 @@
+<div class="row mb-1">
+
+	<div class="col-1">
+		<label>ระดับชั้น</label>
+	</div>
+
+	<div class="col-2">
+		<select class="form-control form-select" [(ngModel)]="room.GradeRef">
+			<option *ngFor="let opt of grades" [ngValue]="opt.Ref" [selected]="opt.Ref === grade.Ref">{{opt.Name}}</option>
+		</select>
+	</div>
+
+</div>
+
+<div class="row mb-1">
+
+	<div class="col-1">
+		<label>ห้อง</label>
+	</div>
+
+	<div class="col-2">
+		<input type="text" class="form-control" [(ngModel)]="room.Name">
+	</div>
+
+</div>
+
+<button class="btn btn-primary" (click)="save()">
+	บันทึก
+</button>
+
+<button class="btn btn-danger" (click)="remove()" style="margin-left: 0.5em">
+	ลบ
+</button>
+
+<button class="btn btn-secoundary" (click)="cancel()" style="margin-left: 0.5em">
+	ยกเลิก
+</button>

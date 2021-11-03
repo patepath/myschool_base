@@ -1,0 +1,123 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+
+                <div class="form-group row">
+
+                    <div class="col-2">
+                        <label for="reportdate">เดือน</label>
+                        <select class="form-control form-select" [(ngModel)]="mm" (change)="updateDate()">
+                            <option *ngFor="let mm of mms" [ngValue]="mm.Value">{{mm.Name}}</option>
+                        </select>
+                    </div>
+
+                    <div class="col-2">
+                        <label for="reportdate">ปี (พ.ศ.)</label>
+                        <select class="form-control form-select" [(ngModel)]="yyyy" (change)="updateDate()">
+                            <option *ngFor="let yyyy of yyyys" [ngValue]="yyyy">{{yyyy}}</option>
+                        </select>
+                    </div>
+
+                    <div class="col-3">
+                        <label for="grade">ชั้นเรียน</label>
+                        <select class="form-control form-select" [(ngModel)]="grade" (change)="searchRoom()">
+                            <option *ngFor="let grade of grades" [ngValue]="grade">{{grade.Name}}</option>
+                        </select>
+                    </div>
+
+                    <div class="col-2">
+                        <label for="room">ห้องเรียน</label>
+                        <select class="form-control form-select" [(ngModel)]="room" (change)="search()">
+                            <option *ngFor="let room of rooms" [ngValue]="room">{{room.Name}}</option>
+                        </select>
+                    </div>
+
+                </div>
+
+                <table width="100%">
+                    
+                    <thead>
+                        <tr>
+                            <th scope="col" class="cell">รหัส</th>
+                            <th scope="col" class="cell">ชื่อ-นามสกุล</th>
+                            <th scope="col" class="cell cell-data">01</th>
+                            <th scope="col" class="cell cell-data">02</th>
+                            <th scope="col" class="cell cell-data">03</th>
+                            <th scope="col" class="cell cell-data">04</th>
+                            <th scope="col" class="cell cell-data">05</th>
+                            <th scope="col" class="cell cell-data">06</th>
+                            <th scope="col" class="cell cell-data">06</th>
+                            <th scope="col" class="cell cell-data">08</th>
+                            <th scope="col" class="cell cell-data">09</th>
+                            <th scope="col" class="cell cell-data">10</th>
+                            <th scope="col" class="cell cell-data">11</th>
+                            <th scope="col" class="cell cell-data">12</th>
+                            <th scope="col" class="cell cell-data">13</th>
+                            <th scope="col" class="cell cell-data">14</th>
+                            <th scope="col" class="cell cell-data">15</th>
+                            <th scope="col" class="cell cell-data">16</th>
+                            <th scope="col" class="cell cell-data">16</th>
+                            <th scope="col" class="cell cell-data">18</th>
+                            <th scope="col" class="cell cell-data">19</th>
+                            <th scope="col" class="cell cell-data">20</th>
+                            <th scope="col" class="cell cell-data">21</th>
+                            <th scope="col" class="cell cell-data">22</th>
+                            <th scope="col" class="cell cell-data">23</th>
+                            <th scope="col" class="cell cell-data">24</th>
+                            <th scope="col" class="cell cell-data">25</th>
+                            <th scope="col" class="cell cell-data">26</th>
+                            <th scope="col" class="cell cell-data">26</th>
+                            <th scope="col" class="cell cell-data">28</th>
+                            <th scope="col" class="cell cell-data">29</th>
+                            <th scope="col" class="cell cell-data">30</th>
+                            <th scope="col" class="cell cell-data">31</th>
+                            <th scope="col" class="cell" style="text-align: center;">รวมเช็ค</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr *ngFor="let report of reports">
+                            <td class="cell">{{report.Code}}</td>
+                            <td class="cell">{{report.Fullname}}</td>
+                            <td class="cell">{{report.D01}}</td>
+                            <td class="cell">{{report.D02}}</td>
+                            <td class="cell">{{report.D03}}</td>
+                            <td class="cell">{{report.D04}}</td>
+                            <td class="cell">{{report.D05}}</td>
+                            <td class="cell">{{report.D06}}</td>
+                            <td class="cell">{{report.D07}}</td>
+                            <td class="cell">{{report.D08}}</td>
+                            <td class="cell">{{report.D09}}</td>
+                            <td class="cell">{{report.D10}}</td>
+                            <td class="cell">{{report.D11}}</td>
+                            <td class="cell">{{report.D12}}</td>
+                            <td class="cell">{{report.D13}}</td>
+                            <td class="cell">{{report.D14}}</td>
+                            <td class="cell">{{report.D15}}</td>
+                            <td class="cell">{{report.D16}}</td>
+                            <td class="cell">{{report.D17}}</td>
+                            <td class="cell">{{report.D18}}</td>
+                            <td class="cell">{{report.D19}}</td>
+                            <td class="cell">{{report.D20}}</td>
+                            <td class="cell">{{report.D21}}</td>
+                            <td class="cell">{{report.D22}}</td>
+                            <td class="cell">{{report.D23}}</td>
+                            <td class="cell">{{report.D24}}</td>
+                            <td class="cell">{{report.D25}}</td>
+                            <td class="cell">{{report.D26}}</td>
+                            <td class="cell">{{report.D27}}</td>
+                            <td class="cell">{{report.D28}}</td>
+                            <td class="cell">{{report.D29}}</td>
+                            <td class="cell">{{report.D30}}</td>
+                            <td class="cell">{{report.D31}}</td>
+                            <td class="cell" style="text-align: center;">{{report.Total}}</td>
+                        </tr>
+                    </tbody>
+
+                </table>  
+                
+            </div>
+        </div>
+    </div>
+</div>

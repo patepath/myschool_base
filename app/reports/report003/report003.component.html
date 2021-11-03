@@ -1,0 +1,63 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+
+                <div class="form-group row">
+
+                    <div class="col-2">
+                        <label for="reportdate">วันที่</label>
+                        <select class="form-control form-select" [(ngModel)]="dd">
+                            <option *ngFor="let dd of dds" [ngValue]="dd">{{dd}}</option>
+                        </select>
+                    </div>
+
+                    <div class="col-2">
+                        <label for="reportdate">เดือน</label>
+                        <select class="form-control form-select" [(ngModel)]="mm">
+                            <option *ngFor="let mm of mms" [ngValue]="mm.Value">{{mm.Name}}</option>
+                        </select>
+                    </div>
+
+                    <div class="col-2">
+                        <label for="reportdate">ปี (พ.ศ.)</label>
+                        <select class="form-control form-select" [(ngModel)]="yyyy">
+                            <option *ngFor="let yyyy of yyyys" [ngValue]="yyyy">{{yyyy}}</option>
+                        </select>
+                    </div>
+
+                </div>
+
+                <button class="btn btn-default"  (click)="report()">ค้นหา</button>
+
+                <hr>
+                
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col" >ชั้น</th>
+                            <th scope="col" style="width: 8em; text-align: center;">จำนวน นร.</th>
+                            <th scope="col" style="width: 8em; text-align: center;">มาปกติ</th>
+                            <th scope="col" style="width: 8em; text-align: center;">ขาดเรียน</th>
+                            <th scope="col" style="width: 8em; text-align: center;">สาย 1</th>
+                            <th scope="col" style="width: 8em; text-align: center;">สาย 2</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr *ngFor="let report of reports">
+                            <td >{{report.ClassName + '/' + report.Room}}</td>
+                            <td style="text-align: center;" >{{report.StudentAmoung}}</td>
+                            <td style="text-align: center;" >{{report.Normal}}</td>
+                            <td style="text-align: center;" >{{report.Absent}}</td>
+                            <td style="text-align: center;" >{{report.Late1}}</td>
+                            <td style="text-align: center;" >{{report.Late2}}</td>
+                        </tr>
+                    </tbody>
+
+                </table>
+
+            </div>
+        </div>
+    </div>
+</div>

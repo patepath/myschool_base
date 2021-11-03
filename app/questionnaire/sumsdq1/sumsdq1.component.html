@@ -1,0 +1,279 @@
+<div class="main-content">
+
+    <div class="container">
+
+        <h4>{{title}}</h4>
+        <h5>1. พฤติกรรมด้านอารมย์</h5>
+        <table class="table">
+            <caption></caption>
+
+            <thead>
+                <tr>
+                    <th scope="col" style="width: 5em">ข้อ</th>
+                    <th scope="col">รายการประเมิน</th>
+                    <th scope="col" style="width: 5em">คะแนน</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                <tr>
+                    <td>3</td>
+                    <td>บ่นปวดศรีษะ ปวดท้อง หรือคลื่นไส้บ่อยๆ</td>
+                    <td>{{no3}}</td>
+                </tr>
+                <tr>
+                    <td>8</td>
+                    <td>มีความกังวลหลายเรื่อง ดูเหมือนกังวลบ่อย</td>
+                    <td>{{no8}}</td>
+                </tr>
+                <tr>
+                    <td>13</td>
+                    <td>มีความกังวลหลายเรื่อง ดูเหมือนกังวลบ่อย</td>
+                    <td>{{no13}}</td>
+                </tr>
+                <tr>
+                    <td>16</td>
+                    <td>ไม่มีความสุข เศร้าหรือร้องไห้บ่อยๆ</td>
+                    <td>{{no16}}</td>
+                </tr>
+                <tr>
+                    <td>24</td>
+                    <td>มีความกลัวหลายเรื่อง หวาดกลัวง่าย</td>
+                    <td>{{no24}}</td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td style="font-size: x-large;">
+                        <span class="mr-5">การแปลผล/จัดอยู่ในกลุ่ม</span>
+                        <span class="mr-3"><input type="checkbox" disabled="true" [checked]="sumtopic1 < 4"> ปกติ</span>
+                        <span class="mr-3"><input type="checkbox" disabled="true" [checked]="sumtopic1 == 4"> เสี่ยง</span>
+                        <span class="mr-3"><input type="checkbox" disabled="true" [checked]="sumtopic1 > 4"> มีปัญหา</span>
+                    </td>
+                    <td><strong><u>{{sumtopic1}}</u></strong></td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
+        <h5>2. พฤติกรรมเกเร</h5>
+        <table class="table">
+            <caption></caption>
+
+            <thead>
+                <tr>
+                    <th scope="col" style="width: 5em">ข้อ</th>
+                    <th scope="col">รายการประเมิน</th>
+                    <th scope="col" style="width: 5em">คะแนน</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                <tr>
+                    <td>5</td>
+                    <td>แผลงฤทธิ์บ่อยๆ หรืออารมย์ร้อน</td>
+                    <td>{{no5}}</td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td>โดยปกติแล้วเชือฟังตามที่ผู้ใหญ่บอก</td>
+                    <td>{{no7}}</td>
+                </tr>
+                <tr>
+                    <td>12</td>
+                    <td>มีเรื่องทะเลาะหรือรังแกคนอื่นบ่อยๆ</td>
+                    <td>{{no12}}</td>
+                </tr>
+                <tr>
+                    <td>18</td>
+                    <td>พูดปดหรือขี้โกงบ่อยๆ</td>
+                    <td>{{no18}}</td>
+                </tr>
+                <tr>
+                    <td>22</td>
+                    <td>ขโมยของที่บ้าน ที่โรงเรียน หรือที่อื่นๆ</td>
+                    <td>{{no22}}</td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td style="font-size: x-large;">
+                        <span class="mr-5">การแปลผล/จัดอยู่ในกลุ่ม</span>
+                        <span class="mr-3"><input type="checkbox" disabled="true" [checked]="sumtopic2 < 4"> ปกติ</span>
+                        <span class="mr-3"><input type="checkbox" disabled="true" [checked]="sumtopic2 == 4"> เสี่ยง</span>
+                        <span class="mr-3"><input type="checkbox" disabled="true" [checked]="sumtopic2 > 4"> มีปัญหา</span>
+                    </td>
+                    <td><strong><u>{{sumtopic2}}</u></strong></td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
+        <h5>3. พฤติกรรมไม่อยู่นิ่ง</h5>
+        <table class="table">
+            <caption></caption>
+
+            <thead>
+                <tr>
+                    <th scope="col" style="width: 5em">ข้อ</th>
+                    <th scope="col">รายการประเมิน</th>
+                    <th scope="col" style="width: 5em">คะแนน</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                <tr>
+                    <td>2</td>
+                    <td>อยู่ไม่สุข เคลื่อนไหวมาก ไม่สามารถอยู่นิ่งได้นานๆ</td>
+                    <td>{{no2}}</td>
+                </tr>
+                <tr>
+                    <td>10</td>
+                    <td>หยุกหยิก หรือดิ้นไปดิ้นมาตลอดเวลา</td>
+                    <td>{{no10}}</td>
+                </tr>
+                <tr>
+                    <td>15</td>
+                    <td>วอกแวกง่ายไม่มีสมาธิ</td>
+                    <td>{{no15}}</td>
+                </tr>
+                <tr>
+                    <td>21</td>
+                    <td>คิดก่อนทำ</td>
+                    <td>{{no21}}</td>
+                </tr>
+                <tr>
+                    <td>25</td>
+                    <td>มีสมาธิในการติดตามทำงานจนเสร็จ</td>
+                    <td>{{no25}}</td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td style="font-size: x-large;">
+                        <span class="mr-5">การแปลผล/จัดอยู่ในกลุ่ม</span>
+                        <span class="mr-3"><input type="checkbox" disabled="true" [checked]="sumtopic3 < 4"> ปกติ</span>
+                        <span class="mr-3"><input type="checkbox" disabled="true" [checked]="sumtopic3 == 4"> เสี่ยง</span>
+                        <span class="mr-3"><input type="checkbox" disabled="true" [checked]="sumtopic3 > 4"> มีปัญหา</span>
+                    </td>
+                    <td><strong><u>{{sumtopic3}}</u></strong></td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
+        <h5>4. พฤติกรรมด้านความสัมพันธ์กับเพื่อน</h5>
+        <table class="table">
+            <caption></caption>
+
+            <thead>
+                <tr>
+                    <th scope="col" style="width: 5em">ข้อ</th>
+                    <th scope="col">รายการประเมิน</th>
+                    <th scope="col" style="width: 5em">คะแนน</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                <tr>
+                    <td>6</td>
+                    <td>ค่อนข้างอยู่โดดเดี่ยวมักเล่นตามลำพัง</td>
+                    <td>{{no6}}</td>
+                </tr>
+                <tr>
+                    <td>11</td>
+                    <td>มีเพื่อนสนิทอย่างน้อยหนึ่งคน</td>
+                    <td>{{no10}}</td>
+                </tr>
+                <tr>
+                    <td>14</td>
+                    <td>โดยทั่วไปเป็นที่ชอบพอของคนอื่น</td>
+                    <td>{{no14}}</td>
+                </tr>
+                <tr>
+                    <td>19</td>
+                    <td>ถูกเด็กคนอื่นๆแกล้งหรือรังแก</td>
+                    <td>{{no19}}</td>
+                </tr>
+                <tr>
+                    <td>23</td>
+                    <td>เข้ากับผู้ใหญ่ได้ดีกว่าเด็กอื่น</td>
+                    <td>{{no23}}</td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td style="font-size: x-large;">
+                        <span class="mr-5">การแปลผล/จัดอยู่ในกลุ่ม</span>
+                        <span class="mr-3"><input type="checkbox" disabled="true" [checked]="sumtopic4 < 4"> ปกติ</span>
+                        <span class="mr-3"><input type="checkbox" disabled="true" [checked]="sumtopic4 == 4"> เสี่ยง</span>
+                        <span class="mr-3"><input type="checkbox" disabled="true" [checked]="sumtopic4 > 4"> มีปัญหา</span>
+                    </td>
+                    <td><strong><u>{{sumtopic4}}</u></strong></td>
+                </tr>
+
+            </tbody>
+
+        </table>
+        
+        <h5>5. พฤติกรรมด้านความสัมพันธภาพทางสังคม</h5>
+        <table class="table">
+            <caption></caption>
+
+            <thead>
+                <tr>
+                    <th scope="col" style="width: 5em">ข้อ</th>
+                    <th scope="col">รายการประเมิน</th>
+                    <th scope="col" style="width: 5em">คะแนน</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                <tr>
+                    <td>1</td>
+                    <td>บ่นปวดศรีษะ ปวดท้อง หรือคลื่นไส้บ่อยๆ</td>
+                    <td>{{no1}}</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>มีความกังวลหลายเรื่อง ดูเหมือนกังวลบ่อย</td>
+                    <td>{{no4}}</td>
+                </tr>
+                <tr>
+                    <td>9</td>
+                    <td>ไม่มีความสุข เคร้าใจหรือร้องไห้บ่อยๆ</td>
+                    <td>{{no9}}</td>
+                </tr>
+                <tr>
+                    <td>17</td>
+                    <td>ใจดีกับเด็กที่มีอายุน้อยกว่า</td>
+                    <td>{{no17}}</td>
+                </tr>
+                <tr>
+                    <td>20</td>
+                    <td>มักอาสาช่วยเหลือผู้อื่น (พ่อ แม่ ครู เด็กอื่น)</td>
+                    <td>{{no20}}</td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td style="font-size: x-large;">
+                        <span class="mr-5">การแปลผล/จัดอยู่ในกลุ่ม</span>
+                        <span class="mr-3"><input type="checkbox" disabled="true" [checked]="sumtopic5 >= 4"> มีจุดแข็ง</span>
+                        <span class="mr-3"><input type="checkbox" disabled="true" [checked]="sumtopic5 < 4"> ไม่มีจุดแข็ง</span>
+                    </td>
+                    <td><strong><u>{{sumtopic5}}</u></strong></td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
+        <button type="button" class="btn btn-defatult" (click)="clickbttn()">แบบฟอร์มประเมิณ SDQ</button>
+
+    </div>
+
+</div>

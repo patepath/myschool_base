@@ -1,0 +1,90 @@
+<div class="main-content">
+
+    <div class="container-fluid">
+
+        <div class="card">
+
+            <div class="card-body">
+
+                <div class="toolbar">
+
+                    <div class="row">
+
+                        <div class="col-auto">
+                            <label class="label label-default">วันที่</label>
+                            <input type="date" class="datepicker form-control" [(ngModel)]="checkdate" (change)="dateChange()">
+                        </div>
+
+                        <div class="col-auto">
+                            <label class="label label-default">ระดับชั้น</label>
+                            <select class="form-select" [(ngModel)]="grade_ref" (change)="gradeChage()">
+                                <option [ngValue]="0">- เลือก -</option>
+                                <option *ngFor="let opt of grades" [ngValue]="opt.Ref">{{opt.Name}}</option>
+                            </select>
+                        </div>
+
+                        <div class="col-auto">
+                            <label class="label label-default">ห้อง</label>
+                            <select class="form-select" [(ngModel)]="room_ref" (change)="search()">
+                                <option [ngValue]="0">- เลือก -</option>
+                                <option *ngFor="let opt of rooms" [ngValue]="opt.Ref">{{opt.Name}}</option>
+                            </select>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="mt-3">
+
+                    <table id="reporttable" class="table display">
+                        <caption>รายงานการเช็คชื่อ</caption>
+
+                        <thead>
+                            <tr>
+                                <th scope="col" style="width: 5em;">เลขที่</th>
+                                <th scope="col" style="width: 5em;">รหัส</th>
+                                <th scope="col">ชื่อ-นามสกุล</th>
+                                <th scope="col" style="width: 3em">1</th>
+                                <th scope="col" style="width: 3em">2</th>
+                                <th scope="col" style="width: 3em">3</th>
+                                <th scope="col" style="width: 3em">4</th>
+                                <th scope="col" style="width: 3em">5</th>
+                                <th scope="col" style="width: 3em">6</th>
+                                <th scope="col" style="width: 3em">7</th>
+                                <th scope="col" style="width: 3em">8</th>
+                                <th scope="col" style="width: 3em">9</th>
+                                <th scope="col" style="width: 3em">10</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr *ngFor="let row of dataTable.dataRows" class="row-data">
+                                <td>{{row[0]}}</td>
+                                <td>{{row[1]}}</td>
+                                <td>{{row[2]}}</td>
+                                <td>{{row[3]}}</td>
+                                <td>{{row[4]}}</td>
+                                <td>{{row[5]}}</td>
+                                <td>{{row[6]}}</td>
+                                <td>{{row[7]}}</td>
+                                <td>{{row[8]}}</td>
+                                <td>{{row[9]}}</td>
+                                <td>{{row[10]}}</td>
+                                <td>{{row[11]}}</td>
+                                <td>{{row[12]}}</td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

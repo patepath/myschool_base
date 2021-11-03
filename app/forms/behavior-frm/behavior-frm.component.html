@@ -1,0 +1,76 @@
+<div class="form-group">
+
+	<div class="row my-2">
+
+		<div class="col-1">
+			<label>เลขที่กลุ่ม</label>
+		</div>
+		
+		<div class="col-1">
+			<input type="number" class="form-control" [(ngModel)]="behavior.GroupNo">
+		</div>
+
+	</div>
+
+	<div class="row my-2">
+
+		<div class="col-1">
+			<label>กลุ่ม</label>
+		</div>
+		
+		<div class="col-8">
+			<input type="text" class="form-control" [(ngModel)]="behavior.GroupName">
+		</div>
+
+	</div>
+
+	<div class="row my-2">
+
+		<div class="col-1">
+			<label>เลขที่หัวข้อ</label>
+		</div>
+		
+		<div class="col-1">
+			<input type="number" class="form-control" [(ngModel)]="behavior.TopicNo">
+		</div>
+
+	</div>
+
+	<div class="row my-2">
+
+		<div class="col-1">
+			<label>หัวข้อ</label>
+		</div>
+		
+		<div class="col-8">
+			<input type="text" class="form-control" [(ngModel)]="behavior.TopicName">
+		</div>
+
+	</div>
+
+	<div class="row my-2">
+
+		<div class="col-1">
+			<label>คะแนน</label>
+		</div>
+		
+		<div class="col-1">
+			<input type="number" class="form-control" [(ngModel)]="behavior.Point">
+		</div>
+
+	</div>
+
+</div>
+
+<button class="btn btn-primary" (click)="save()">
+	บันทึก
+</button>
+
+<button class="btn btn-danger" style="margin-left: 0.5em;" (click)="remove()">
+	ลบ
+</button>
+
+<button class="btn btn-secoundary" (click)="cancel()" style="margin-left: 0.5em">
+	ยกเลิก
+</button>
+

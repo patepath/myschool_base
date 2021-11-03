@@ -1,0 +1,114 @@
+<div class="main-content">
+
+    <div class="container-fluid">
+        
+        <div id="subject-frm">
+
+            <div class="card">
+
+                <div class="card-body">
+
+                    <div class="row">
+                        <div class="col-2">
+                            <label class="label label-default">หมวดวิชา</label>
+                            <select class="form-select" [(ngModel)]="subject.GroupRef">
+                                <option *ngFor="let opt of subjectgroups" [ngValue]="opt.Ref">{{opt.Name}}</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row mt-1">
+                        <div class="col-2">
+                            <label class="label label-default">สำหรับระดับชั้น</label>
+                            <select class="form-select" [(ngModel)]="subject.GradeRef">
+                                <option *ngFor="let opt of grades" [ngValue]="opt.Ref">{{opt.Name}}</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row mt-1">
+                        <div class="col-1">
+                            <label class="label label-default">รหัส</label>
+                            <input type="text" class="form-control" [(ngModel)]="subject.Code">
+                        </div>
+
+                        <div class="col-3">
+                            <label class="label label-default">ชื่อวิชา</label>
+                            <input type="text" class="form-control" [(ngModel)]="subject.Name">
+                        </div>
+                    </div>
+
+                    <div class="row mt-3">
+                        <div class="col">
+                            <button type="button" class="btn btn-primary" (click)="save()">บันทึก</button>
+                            <button type="button" class="btn btn-default ml-1" (click)="setEdit(false)">ออก</button>
+                        </div>
+
+                        <div class="col align-self-end text-right">
+                            <button type="button" class="btn btn-danger ml-1" (click)="del()">ลบ</button>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div id="subject-view">
+
+            <div class="card">
+
+                <div class="card-body">
+
+                    <div class="toolbar">
+                        <div class="row">
+                            <div class="col align-self-end text-right">
+                                <button type="button" class="btn btn-success" (click)="insert()">
+                                    <span class="nc-icon nc-simple-add" aria-hidden="true"></span> 
+                                    เพิ่มชื่อวิชา
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <table id="subjecttable" class="table display">
+                        <caption></caption>
+
+                        <thead>
+                            <tr>
+                                <th scope="col" style="width: 15em">{{ dataTable.headerRow[0] }}</th>
+                                <th scope="col" style="width: 15em">{{ dataTable.headerRow[1] }}</th>
+                                <th scope="col" style="width: 5em">{{ dataTable.headerRow[2] }}</th>
+                                <th scope="col">{{ dataTable.headerRow[3] }}</th>
+                            </tr>
+                        </thead>
+
+                        <tfoot>
+                            <tr>
+                                <th scope="col">{{ dataTable.footerRow[0] }}</th>
+                                <th scope="col">{{ dataTable.footerRow[1] }}</th>
+                                <th scope="col">{{ dataTable.footerRow[2] }}</th>
+                                <th scope="col">{{ dataTable.footerRow[3] }}</th>
+                            </tr>
+                        </tfoot>
+
+                        <tbody>
+                            <tr *ngFor="let row of dataTable.dataRows">
+                                <td>{{row[0]}}</td>
+                                <td>{{row[1]}}</td>
+                                <td>{{row[2]}}</td>
+                                <td>{{row[3]}}</td>
+                            </tr>
+                        </tbody>
+
+                    </table>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

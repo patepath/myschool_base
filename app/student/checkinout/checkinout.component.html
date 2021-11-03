@@ -1,0 +1,130 @@
+<div class="main-content">
+
+    <div class="container-fluid">
+
+        <div id="checkinout-form">
+
+            <div class="card">
+
+                <div class="card-body">
+
+                    <div class="row">
+
+                        <div class="col-auto">
+                            <img [src]="imagepath" alt="" class="img-fluid"  style="width: 300px"><br>
+                        </div>
+
+                        <div class="col-auto">
+
+                            <div class="row mb-1">
+                                <div class="col-auto">
+                                    <label>วันที่-เวลา</label>
+                                    <input value="{{checkinout.DateTime}}" class="form-control" disabled>
+                                </div>
+                            </div>
+
+                            <div class="row mb-1">
+                                <div class="col-auto">
+                                    <label>รหัสนักเรียน</label>
+                                    <input value="{{checkinout.StudentCode}}" class="form-control" disabled>
+                                </div>
+                            </div>
+
+                            <div class="row mb-1">
+                                <div class="col-auto">
+                                    <label>ชื่อ-นามสกุล</label>
+                                    <input value="{{checkinout.StudentFullName}}" class="form-control" disabled>
+                                </div>
+                            </div>
+
+                            <div class="row mb-1">
+                                <div class="col-auto">
+                                    <label>อุณหภูมิ</label>
+                                    <input value="{{checkinout.Temperature}}" class="form-control" disabled>
+                                </div>
+                            </div>
+
+                            <div class="row mb-1">
+                                <div class="col-auto">
+                                    <label>สถานะ</label>
+                                    <input value="{{checkinout.Status}}" class="form-control" disabled>
+                                </div>
+                            </div>
+
+                            <div class="row mt-3">
+                                <div class="col-auto text-center">
+                                    <button class="btn btn-default" (click)="close()">ยกเลิก</button>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div id="checkinout-view">
+
+            <div class="card">
+
+                <div class="card-body">
+
+                    <div class="toolbar">
+                        <!--        Here you can write extra buttons/actions for the toolbar              -->
+
+                        <div class="row mb-3">
+                            <div class="col">
+                                <button type="button" class="btn btn-info" (click)="search()">
+                                    <span class="fa fa-refresh"></span>
+                                    Refresh
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <table id="checkinoutTable" class="table table-striped table-bordered" >
+                        <caption></caption>
+
+                        <thead>
+                            <tr>
+                                <th scope="col" style="width: 10em;">{{ dataTable.headerRow[0] }}</th>
+                                <th scope="col" style="width: 10em;">{{ dataTable.headerRow[1] }}</th>
+                                <th scope="col">{{ dataTable.headerRow[2] }}</th>
+                                <th scope="col" style="width: 10em;">{{ dataTable.headerRow[3] }}</th>
+                            </tr>
+                        </thead>
+
+                        <tfoot>
+                            <tr>
+                                <th scope="col">{{ dataTable.footerRow[0] }}</th>
+                                <th scope="col">{{ dataTable.footerRow[1] }}</th>
+                                <th scope="col">{{ dataTable.footerRow[2] }}</th>
+                                <th scope="col">{{ dataTable.footerRow[3] }}</th>
+                            </tr>
+                        </tfoot>
+
+                        <tbody>
+                            <tr *ngFor="let row of dataTable.dataRows" onclick="update()">
+                                <td>{{row[0]}}</td>
+                                <td>{{row[1]}}</td>
+                                <td>{{row[2]}}</td>
+                                <td>{{row[3]}}</td>
+                            </tr>
+                        </tbody>
+                        
+                    </table>
+
+                </div>
+                <!-- end content-->
+            </div>
+            <!--  end card  -->
+
+        </div>
+
+    </div>
+
+</div>

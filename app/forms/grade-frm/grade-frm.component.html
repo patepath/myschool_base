@@ -1,0 +1,35 @@
+<div class="row mb-1">
+
+	<div class="col-1">
+		<label>ลำดับ</label>
+	</div>
+
+	<div class="col-1">
+		<input type="text" class="form-control" [(ngModel)]="grade.OrderNo">
+	</div>
+
+</div>
+
+<div class="row mb-1">
+
+	<div class="col-1">
+		<label>ระดับชั้น</label>
+	</div>
+
+	<div class="col-auto">
+		<input type="text" class="form-control" [(ngModel)]="grade.Name">
+	</div>
+
+</div>
+
+<button class="btn btn-primary " (click)="save()">
+	บันทึก
+</button>
+
+<button class="btn btn-danger" style="margin-left: 0.5em;" (click)="remove()">
+	ลบ	
+</button>
+
+<button class="btn btn-secondary" (click)="cancel()" style="margin-left: 0.5em">
+	ยกเลิก
+</button>

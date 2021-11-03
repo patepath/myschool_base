@@ -1,0 +1,193 @@
+<div class="main-content">
+
+    <div class="container-fluid">
+
+        <div id="profile_frm">
+
+            <div class="card">
+
+                <div class="card-body">
+
+                    <div class="row">
+
+                        <div class="col-2">
+                            <label>ปีการศึกษา</label>
+                            <input type="text" class="form-control" [(ngModel)]="checkinprofile.YearEdu">
+                        </div>
+
+                        <div class="col-2">
+                            <label>วันที่</label>
+                            <input type="date" class="form-control" [(ngModel)]="checkinprofile.DateIn">
+                        </div>
+
+                    </div>
+
+                    <div class="row mt-2">
+
+                        <div class="col-2">
+                            <label>กลุ่ม</label>
+                            <input type="text" class="form-control" [(ngModel)]="checkinprofile.Group">
+                        </div>
+
+                        <div class="col-2">
+                            <label>ชื่อ</label>
+                            <input type="text" class="form-control" [(ngModel)]="checkinprofile.Name">
+                        </div>
+                    </div>
+
+                    <div class="row mt-2">
+
+                        <div class="col-2">
+                            <label>สาย 1</label>
+                            <input type="time" class="form-control" [(ngModel)]="checkinprofile.Time1">
+                        </div>
+
+                        <div class="col-1">
+                            <label>คะแนน 1</label>
+                            <input type="number" class="form-control" [(ngModel)]="checkinprofile.Point1">
+                        </div>
+
+                    </div>
+
+                    <div class="row mt-2">
+
+                        <div class="col-2">
+                            <label>สาย 2</label>
+                            <input type="time" class="form-control" [(ngModel)]="checkinprofile.Time2">
+                        </div>
+
+                        <div class="col-1">
+                            <label>คะแนน 2</label>
+                            <input type="number" class="form-control" [(ngModel)]="checkinprofile.Point2">
+                        </div>
+
+                    </div>
+
+                    <div class="row mt-2 mb-2">
+
+                        <div class="col-2">
+                            <label>สาย 3</label>
+                            <input type="time" class="form-control" [(ngModel)]="checkinprofile.Time3">
+                        </div>
+
+                        <div class="col-1">
+                            <label>คะแนน 3</label>
+                            <input type="number" class="form-control" [(ngModel)]="checkinprofile.Point3">
+                        </div>
+
+                    </div>
+
+                    <div class="row mt-3">
+
+                        <div class="col">
+                            <button class="btn btn-success" (click)="save()">
+                                <span class="fa fa-floppy-o" aria-hidden="true"></span> 
+                                บันทึก
+                            </button>
+
+                            <button class="btn btn-default ml-2" (click)="close()">
+                                <span class="fa fa-window-close" aria-hidden="true"></span> 
+                                ยกเลิก
+                            </button>
+                        </div>
+
+                        <div class="col align-self-end text-right">
+                            <button class="btn btn-danger ml-2" (click)="delete()">
+                                <span class="fa fa-close" aria-hidden="true"></span> 
+                                ลบ
+                            </button>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div id="profile_view">
+
+            <div class="card">
+
+                <div class="card-body">
+                    <!--        Here you can write extra buttons/actions for the toolbar              -->
+
+                    <div class="row mb-3">
+
+                        <div class="col-auto">
+                            <label>กลุ่ม</label>
+                            <select class="form-control" [(ngModel)]="checkinprofile.Group" (change)="search()">
+                                <option *ngFor="let opt of groups" [ngValue]="opt" >{{opt}}</option>
+                            </select>
+                        </div>
+
+                        <div class="col align-self-end text-right">
+                            <button class="btn btn-success" (click)="insert()">
+                                <span class="fa fa-plus" aria-hidden="true"></span> 
+                                เพิ่มข้อมูลเวลาเข้าเรียน
+                            </button>
+                        </div>
+
+                    </div>
+
+                    <table id="profileTable" class="display" style="width: 100%;">
+
+                        <caption></caption>
+
+                        <thead>
+                            <tr>
+                                <th scope="col" style="width: 10em">{{ dataTable.headerRow[0] }}</th>
+                                <th scope="col" style="width: 10em">{{ dataTable.headerRow[1] }}</th>
+                                <th scope="col" style="width: 5em">{{ dataTable.headerRow[2] }}</th>
+                                <th scope="col">{{ dataTable.headerRow[3] }}</th>
+                                <th scope="col">{{ dataTable.headerRow[4] }}</th>
+                                <th scope="col">{{ dataTable.headerRow[5] }}</th>
+                                <th scope="col">{{ dataTable.headerRow[6] }}</th>
+                                <th scope="col">{{ dataTable.headerRow[7] }}</th>
+                                <th scope="col">{{ dataTable.headerRow[8] }}</th>
+                            </tr>
+                        </thead>
+
+                        <tfoot>
+                            <tr>
+                                <th scope="col">{{ dataTable.footerRow[0] }}</th>
+                                <th scope="col">{{ dataTable.footerRow[1] }}</th>
+                                <th scope="col">{{ dataTable.footerRow[2] }}</th>
+                                <th scope="col">{{ dataTable.footerRow[3] }}</th>
+                                <th scope="col">{{ dataTable.footerRow[4] }}</th>
+                                <th scope="col">{{ dataTable.footerRow[5] }}</th>
+                                <th scope="col">{{ dataTable.footerRow[6] }}</th>
+                                <th scope="col">{{ dataTable.footerRow[7] }}</th>
+                                <th scope="col">{{ dataTable.footerRow[8] }}</th>
+                            </tr>
+                        </tfoot>
+
+                        <tbody>
+
+                            <tr *ngFor="let row of dataTable.dataRows">
+                                <td>{{ row[0] }}</td>
+                                <td>{{ row[1] }}</td>
+                                <td>{{ row[2] }}</td>
+                                <td>{{ row[3] }}</td>
+                                <td>{{ row[4] }}</td>
+                                <td>{{ row[5] }}</td>
+                                <td>{{ row[6] }}</td>
+                                <td>{{ row[7] }}</td>
+                                <td>{{ row[8] }}</td>
+                            </tr>
+
+                        </tbody>
+                        
+                    </table>
+
+                </div>
+
+            </div>
+            <!-- end content-->
+
+        <div>
+
+    </div>
+
+</div>
