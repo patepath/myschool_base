@@ -8,7 +8,7 @@ import { Opt } from '../school';
 })
 export class ConfigService {
 
-	constructor() { }
+	constructor() {}
 
 	public getAbsentPoint(): number { 
 		return 5;

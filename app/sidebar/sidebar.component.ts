@@ -249,6 +249,15 @@ export const TEACHER_ROUTES = [
             {path: 'checkinsubject', title: 'เช็คชื่อรายคาบ', ab: '2'},
             {path: 'checkinreport', title: 'รายงานเช็คชื่อรายคาบ', ab: '3'},
         ]
+    }, {
+        path: '/teacher',
+        title: 'การเช็คชื่อ',
+        type: 'sub',
+        collapse: 'teacher',
+        icontype: 'nc-icon nc-camera-compact',
+        children: [
+            {path: 'checkinout', title: 'การเข้า-ออก', ab: '1'},
+        ]
     } 
 ];
 

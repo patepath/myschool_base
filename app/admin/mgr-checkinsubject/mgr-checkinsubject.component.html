@@ -65,7 +65,7 @@
 
                     <div class="col-auto">
                         <label class="label label-default">วันที่เช็คชื่อ</label>
-                        <input type="date" class="form-control" [(ngModel)]="checkinsubject.Created">
+                        <input type="date" class="form-control" [(ngModel)]="checkinsubject.Created" disabled>
                     </div>
 
                     <div class="col-auto">
@@ -87,7 +87,7 @@
 
                     <div class="col-auto">
                         <label class="label label-default">ระดับชั้น</label>
-                        <select class="form-select" [(ngModel)]="checkinsubject.GradeRef" (change)="gradeChange()">
+                        <select class="form-select" [(ngModel)]="checkinsubject.GradeRef" (change)="gradeChange()" disabled>
                             <option [ngValue]="0">- เลือก -</option>
                             <option *ngFor="let opt of grades" [ngValue]="opt.Ref">{{opt.Name}}</option>
                         </select>
@@ -95,7 +95,7 @@
 
                     <div class="col-auto">
                         <label class="label label-default">ห้อง</label>
-                        <select class="form-select" [(ngModel)]="checkinsubject.RoomRef" (change)="roomChange()">
+                        <select class="form-select" [(ngModel)]="checkinsubject.RoomRef" (change)="roomChange()" disabled>
                             <option [ngValue]="0">- เลือก -</option>
                             <option *ngFor="let opt of rooms" [ngValue]="opt.Ref">{{opt.Name}}</option>
                         </select>
@@ -123,7 +123,9 @@
                     <div class="p-3 mb-2 bg-warning text-dark mt-2">คาบนี้มีการเช็คชื่อไปเรียบร้อยแล้ว ถ้าต้องการดำเนินการต่อโปรดติดต่อผู้ดูแลระบบ</div>
                 </div>
 
-                <table class="table display mt-3">
+                <p style="margin-top: 0.25em;"></p>
+
+                <table id="checkinsubject-table" class="table display mt-3">
                     <caption>รายชื่อนักเรียน</caption>
 
                     <thead>
@@ -140,7 +142,7 @@
                     </thead>
 
                     <tbody>
-                        <tr *ngFor="let s of checkinsubject.Students; let i = index">
+                        <tr *ngFor="let s of checkinsubject.Students; let i = index" id="row{{i}}">
                             <td>{{s.StudentNo}}</td>
                             <td>{{s.StudentCode}}</td>
                             <td>{{s.StudentFullName}}</td>
@@ -154,7 +156,7 @@
 
                 </table>
 
-                <button type="button" id="btnsave" class="btn btn-primary" (click)="save()">บันทึกการเช็คชื่อ</button>
+                <button type="button" id="btnSave" class="btn btn-primary" (click)="save()">บันทึกการเช็คชื่อ</button>
                 <button type="button" id="btnDelete" class="btn btn-danger ml-1" (click)="delete()">ลบข้อมูลการเช็คชื่อ</button>
 
             </div>
@@ -163,5 +165,64 @@
 
     </div>
 
+</div>
+
+<div id="message" class="modal" tabindex="-1" role="dialog">
+
+  <div class="modal-dialog" role="document">
+
+    <div class="modal-content">
+
+      <div class="modal-header">
+
+        <h5 class="modal-title">{{msg_header}}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="close_msg()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+
+      </div>
+
+      <div class="modal-body">
+        <p>{{msg_body}}</p>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="close_msg()">ออก</button>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<div id="msg-confirm" class="modal" tabindex="-1" role="dialog">
+
+  <div class="modal-dialog" role="document">
+
+    <div class="modal-content">
+
+      <div class="modal-header">
+
+        <h5 class="modal-title">ลบการเช็คชื่อ</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="close_msg()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+
+      </div>
+
+      <div class="modal-body">
+        <p>ถ้าตอบ "ลบ" ระบบจะลบข้อมูลของการเช็คชื่อในคาบนี้ทั้งหมด</p>
+        <p>ต้องการลบข้อมูลการเช็คชื่อหรือไม่</p>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="confirm_delete()">ลบ</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal" (click)="close_msg()">ไม่ลบ</button>
+      </div>
+
+    </div>
+
+  </div>
 
 </div>

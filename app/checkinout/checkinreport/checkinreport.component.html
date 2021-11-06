@@ -42,9 +42,9 @@
 
                         <thead>
                             <tr>
-                                <th scope="col" style="width: 5em;">เลขที่</th>
-                                <th scope="col" style="width: 5em;">รหัส</th>
-                                <th scope="col">ชื่อ-นามสกุล</th>
+                                <th scope="col" style="width: 5em;">{{dataTable.headerRow[0]}}</th>
+                                <th scope="col" style="width: 5em;">{{dataTable.headerRow[1]}}</th>
+                                <th scope="col">{{dataTable.headerRow[2]}}</th>
                                 <th scope="col" style="width: 3em">1</th>
                                 <th scope="col" style="width: 3em">2</th>
                                 <th scope="col" style="width: 3em">3</th>
@@ -57,6 +57,36 @@
                                 <th scope="col" style="width: 3em">10</th>
                             </tr>
                         </thead>
+
+                        <tfoot>
+                            <tr>
+                                <th scope="col" colspan="3">จำนวนที่มา</th>
+                                <th scope="col">{{normal.P1}}</th>
+                                <th scope="col">{{normal.P2}}</th>
+                                <th scope="col">{{normal.P3}}</th>
+                                <th scope="col">{{normal.P4}}</th>
+                                <th scope="col">{{normal.P5}}</th>
+                                <th scope="col">{{normal.P6}}</th>
+                                <th scope="col">{{normal.P7}}</th>
+                                <th scope="col">{{normal.P8}}</th>
+                                <th scope="col">{{normal.P9}}</th>
+                                <th scope="col">{{normal.P10}}</th>
+                            </tr>
+                        
+                            <tr>
+                                <th scope="col" colspan="3">จำนวนที่ขาด</th>
+                                <th scope="col">{{absent.P1}}</th>
+                                <th scope="col">{{absent.P2}}</th>
+                                <th scope="col">{{absent.P3}}</th>
+                                <th scope="col">{{absent.P4}}</th>
+                                <th scope="col">{{absent.P5}}</th>
+                                <th scope="col">{{absent.P6}}</th>
+                                <th scope="col">{{absent.P7}}</th>
+                                <th scope="col">{{absent.P8}}</th>
+                                <th scope="col">{{absent.P9}}</th>
+                                <th scope="col">{{absent.P10}}</th>
+                            </tr>
+                        </tfoot>
 
                         <tbody>
                             <tr *ngFor="let row of dataTable.dataRows" class="row-data">

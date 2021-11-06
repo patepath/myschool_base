@@ -39,6 +39,9 @@ export class SubjectComponent implements OnInit {
   public checkinstudents: CheckinSubjectStudent[];
   public checkinstudent: CheckinSubjectStudent;
 
+  public msg_header: string;
+  public msg_body: string;
+
   constructor(
     public gradeServ: GradeService, 
     public roomServ: RoomService,
@@ -99,8 +102,6 @@ export class SubjectComponent implements OnInit {
 
       this.result = r;
 
-      //alert(this.result.Success);
-
       if(!this.result.Success){
         $('#warning-tag').css('display', 'inline');
         $('#btnsave').css('display', 'none');
@@ -109,6 +110,7 @@ export class SubjectComponent implements OnInit {
       } else if(this.checkinsubject.RoomRef != 0) {
         $('#warning-tag').css('display', 'none');
         $('#btnsave').css('display', 'inline');
+        this.checkinsubject.Students = [];
 
         this.studentServ.get(this.grade_ref, this.room_ref, '').subscribe(students => {
           this.students = students
@@ -213,21 +215,29 @@ export class SubjectComponent implements OnInit {
   normal(index: number) {
     this.checkinsubject.Students[index].StatusNo = 1;
     this.checkinsubject.Students[index].StatusName = 'มา';
+
+    $('#row' + index).css('background-color', '#ffffff')
   }
 
   absent(index: number) {
     this.checkinsubject.Students[index].StatusNo = 2;
     this.checkinsubject.Students[index].StatusName = 'ขาดเรียน';
+
+    $('#row' + index).css('background-color', '#ff7f50')
   }
 
   leave(index: number) {
     this.checkinsubject.Students[index].StatusNo = 3;
     this.checkinsubject.Students[index].StatusName = 'ลากิจ';
+
+    $('#row' + index).css('background-color', '#FFDDB9')
   }
 
   sick(index: number) {
     this.checkinsubject.Students[index].StatusNo = 4;
     this.checkinsubject.Students[index].StatusName = 'ลาป่วย';
+
+    $('#row' + index).css('background-color', '#C3C3C3')
   }
 
   save() {
@@ -235,11 +245,21 @@ export class SubjectComponent implements OnInit {
       this.result = result;
       
       if(this.result.Success) {
-        alert('success');
+        this.msg_header = 'บันทึกข้อมูลการเช็คชื่อ';
+        this.msg_body = 'บันทึกข้อมูลการเช็คชื่อเรียบร้อย';
+        $('#message').modal('show');
+        $('#btnsave').css('display', 'none');
+
       } else {
-        alert('failure');
+        this.msg_header = 'บันทึกข้อมูลการเช็คชื่อ';
+        this.msg_body = 'ไม่สามามรถบันทึกข้อมูลการเช็คชื่อได้';
+        $('#message').modal('show');
       }
     })
+  }
+
+  close_msg() {
+    $('#message').modal('hide');
   }
 }
 

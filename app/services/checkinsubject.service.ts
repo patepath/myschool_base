@@ -60,9 +60,37 @@ export class CheckinsubjectService {
 
 		const options = { headers, params };
 
-		console.log(options);
-
 		return this.http.get<CheckinSubject>(this.urlapi, options);
+	}
+
+	getStatusNormal(created: string, room_ref: string): Observable<CheckinStudent> {
+		const headers =  new HttpHeaders() 
+		.set('Content-Type', 'application/json')
+
+		const params = new HttpParams()
+		.set("service",  "checkinsubject")
+		.set("action" , "get_status_normal")
+		.set("created" , created)
+		.set("room_ref" , room_ref);
+
+		const options = { headers, params };
+
+		return this.http.get<CheckinStudent>(this.urlapi, options);
+	}
+
+	getStatusAbsent(created: string, room_ref: string): Observable<CheckinStudent> {
+		const headers =  new HttpHeaders() 
+		.set('Content-Type', 'application/json')
+
+		const params = new HttpParams()
+		.set("service",  "checkinsubject")
+		.set("action" , "get_status_absent")
+		.set("created" , created)
+		.set("room_ref" , room_ref);
+
+		const options = { headers, params };
+
+		return this.http.get<CheckinStudent>(this.urlapi, options);
 	}
 
 	save(checkinsubject: CheckinSubject): Observable<any>{
@@ -78,6 +106,50 @@ export class CheckinsubjectService {
 		return this.http.post<any>(this.urlapi, checkinsubject, options);
 	}
 
+	change(created: string, period: string, room_ref: string, checkinsubject: CheckinSubject):Observable<any> {
+		const headers =  new HttpHeaders() 
+		.set('Content-Type', 'application/json')
+
+		const params = new HttpParams()
+		.set("service",  "checkinsubject")
+		.set("action" , "change")
+		.set("created" , created)
+		.set("period" , period)
+		.set("room_ref" , room_ref);
+
+		const options = { headers, params };
+
+		return this.http.post<any>(this.urlapi, checkinsubject, options);
+	}
+
+	update(checkinsubject: CheckinSubject):Observable<any> {
+		const headers =  new HttpHeaders() 
+		.set('Content-Type', 'application/json')
+
+		const params = new HttpParams()
+		.set("service",  "checkinsubject")
+		.set("action" , "update");
+
+		const options = { headers, params };
+
+		return this.http.post<any>(this.urlapi, checkinsubject, options);
+	}
+
+	delete(created: string, period: string, room_ref: string): Observable<any> {
+		const headers =  new HttpHeaders() 
+		.set('Content-Type', 'application/json')
+
+		const params = new HttpParams()
+		.set("service",  "checkinsubject")
+		.set("action" , "delete")
+		.set("created" , created)
+		.set("period" , period)
+		.set("room_ref" , room_ref);
+
+		const options = { headers, params };
+
+		return this.http.get<any[]>(this.urlapi, options);
+	}
 }
 
 export interface CheckinStudent {

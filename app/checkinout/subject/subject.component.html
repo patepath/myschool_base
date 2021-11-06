@@ -84,7 +84,7 @@
                     </thead>
 
                     <tbody>
-                        <tr *ngFor="let s of checkinsubject.Students; let i = index">
+                        <tr *ngFor="let s of checkinsubject.Students; let i = index" id="row{{i}}">
                             <td>{{s.StudentNo}}</td>
                             <td>{{s.StudentCode}}</td>
                             <td>{{s.StudentFullName}}</td>
@@ -94,6 +94,7 @@
                             <td style="text-align: center;"><button type="button" id="leave" class="btn btn-warning btn-sm"(click)="leave(i)">ลากิจ</button></td>
                             <td style="text-align: center;"><button type="button" id="sick" class="btn btn-default btn-sm"(click)="sick(i)">ป่วย</button></td>
                         </tr>
+
                     </tbody>
 
                 </table>
@@ -105,5 +106,34 @@
         </div>
 
     </div>
+
+</div>
+
+<div id="message" class="modal" tabindex="-1" role="dialog">
+
+  <div class="modal-dialog" role="document">
+
+    <div class="modal-content">
+
+      <div class="modal-header">
+
+        <h5 class="modal-title">{{msg_header}}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="close_msg()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+
+      </div>
+
+      <div class="modal-body">
+        <p>{{msg_body}}</p>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="close_msg()">ออก</button>
+      </div>
+
+    </div>
+
+  </div>
 
 </div>

@@ -35,6 +35,9 @@ export const AppRoutes: Routes = [{
             path: 'setting',
             loadChildren: './setting/setting.module#SettingModule'
         }, {
+            path: 'teacher',
+            loadChildren: './teacher/teacher.module#TeacherModule'
+        }, {
             path: 'forms',
             loadChildren: './forms/forms.module#Forms'
         },{

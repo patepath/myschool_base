@@ -31,6 +31,8 @@ export class CheckinreportComponent implements OnInit, AfterViewInit {
   public checkdate: string;
 
   public checkinstudents: CheckinStudent[];
+  public normal: CheckinStudent;
+  public absent: CheckinStudent;
 
   constructor(
     public checkinsubjectServ: CheckinsubjectService,
@@ -41,10 +43,44 @@ export class CheckinreportComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
 		this.dataTable = {
-			headerRow: ['เลขที่', 'รหัส', 'ชื่อ-นามสกุล', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10'],
+			headerRow: ['เลขที่', 'รหัส', 'ชื่อ-นามสกุลนักเรียน', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10'],
 			footerRow: ['เลขที่', 'รหัส', 'ชื่อ-นามสกุล', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10' ],
 			dataRows: [],
 		};
+
+    this.normal = {
+      Ref:      0,
+      No:       0,
+      Code:     '',
+      FullName: '',
+      P1:       '',
+      P2:       '',
+      P3:       '',
+      P4:       '',
+      P5:       '',
+      P6:       '',
+      P7:       '',
+      P8:       '',
+      P9:       '',
+      P10:      '',
+    }
+
+    this.absent = {
+      Ref:      0,
+      No:       0,
+      Code:     '',
+      FullName: '',
+      P1:       '',
+      P2:       '',
+      P3:       '',
+      P4:       '',
+      P5:       '',
+      P6:       '',
+      P7:       '',
+      P8:       '',
+      P9:       '',
+      P10:      '',
+    }
 
     this.gradeServ.get().subscribe(grades => this.grades = grades);
     this.grade_ref = 0;
@@ -109,6 +145,15 @@ export class CheckinreportComponent implements OnInit, AfterViewInit {
   search() {
     this.checkinsubjectServ.get(this.checkdate, this.room_ref.toString()).subscribe(s => {
       this.checkinstudents = s;
+      
+      this.checkinsubjectServ.getStatusNormal(this.checkdate, this.room_ref.toString()).subscribe(s => {
+        this.normal = s;
+      });
+
+      this.checkinsubjectServ.getStatusAbsent(this.checkdate, this.room_ref.toString()).subscribe(s => {
+        this.absent = s;
+      });
+
       this.refreshTable();
     })
   }
