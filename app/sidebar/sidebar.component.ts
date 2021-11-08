@@ -231,8 +231,9 @@ export const ADMIN_ROUTES = [
             {path: 'room', title: 'ห้องเรียน', ab: '7'},
             {path: 'subjectgroup', title: 'หมวดวิชา', ab: '8'},
             {path: 'subject', title: 'วิชา', ab: '9'},
-            {path: 'behavior', title: 'พฤติกรรม', ab: '10'},
-            {path: 'checkinprofile', title: 'เวลาเข้าเรียน', ab: '11'},
+            {path: 'subjectstudent', title: 'ทะเบียนเรียนวิชา', ab: '10'},
+            {path: 'behavior', title: 'พฤติกรรม', ab: '11'},
+            {path: 'checkinprofile', title: 'เวลาเข้าเรียน', ab: '12'},
         ]
     }, 
 ];
@@ -251,10 +252,10 @@ export const TEACHER_ROUTES = [
         ]
     }, {
         path: '/teacher',
-        title: 'การเช็คชื่อ',
+        title: 'รายงาน',
         type: 'sub',
         collapse: 'teacher',
-        icontype: 'nc-icon nc-camera-compact',
+        icontype: 'nc-icon nc-paper',
         children: [
             {path: 'checkinout', title: 'การเข้า-ออก', ab: '1'},
         ]

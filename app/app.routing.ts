@@ -3,6 +3,7 @@ import { AuthGuard } from './auth.guard';
 
 import { AdminLayoutComponent } from './layouts/admin/admin-layout.component';
 import { AuthLayoutComponent } from './layouts/auth/auth-layout.component';
+import { TeacherLayoutComponent } from './layouts/teacher-layout/teacher-layout.component';
 import { StudentLayoutComponent } from './layouts/student-layout/student-layout.component';
 
 export const AppRoutes: Routes = [{
@@ -35,9 +36,6 @@ export const AppRoutes: Routes = [{
             path: 'setting',
             loadChildren: './setting/setting.module#SettingModule'
         }, {
-            path: 'teacher',
-            loadChildren: './teacher/teacher.module#TeacherModule'
-        }, {
             path: 'forms',
             loadChildren: './forms/forms.module#Forms'
         },{
@@ -63,6 +61,11 @@ export const AppRoutes: Routes = [{
             loadChildren: './widgets/widgets.module#WidgetsModule'
         }]
     },{
+        path: '',
+        component: TeacherLayoutComponent,
+        canActivate:[AuthGuard],
+        children: [{path: 'teacher', loadChildren: './teacher/teacher.module#TeacherModule'}]
+    }, {
         path: '',
         component: StudentLayoutComponent,
         canActivate:[AuthGuard],

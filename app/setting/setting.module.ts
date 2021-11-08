@@ -13,6 +13,7 @@ import { TeacherComponent } from './teacher/teacher.component';
 import { DeptComponent } from './dept/dept.component';
 import { SubjectComponent } from './subject/subject.component';
 import { SubjectgroupComponent } from './subjectgroup/subjectgroup.component';
+import { SubjectStudentComponent } from './subject-student/subject-student.component';
 
 @NgModule({
     imports: [
@@ -31,6 +32,7 @@ import { SubjectgroupComponent } from './subjectgroup/subjectgroup.component';
         DeptComponent,
         SubjectComponent,
         SubjectgroupComponent,
+        SubjectStudentComponent,
     ]
 })
 

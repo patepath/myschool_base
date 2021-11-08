@@ -1,0 +1,165 @@
+<div class="main-content">
+
+    <div class="container-fluid">
+
+        <div id="subject-student-form">
+
+            <div class="card">
+
+                <div class="card-body">
+
+                    <div class="card-title">
+                        <h5>ค้นหา:</h5>
+                    </div>
+
+                    <div class="row mb-2">
+
+                        <div class="col-auto">
+                            <label class="label label-default">ปีการศึกษา</label>
+                            <input class="form-control" style="width: 5em;" [(ngModel)]="yearedu"/>
+                        </div>
+
+                        <div class="col-auto">
+                            <label class="label label-default">ระดับชั้น</label>
+                            <select class="form-select" [(ngModel)]="grade_ref" (change)="changeGrade()">
+                                <option [ngValue]="0">- เลือก -</option>
+                                <option *ngFor="let opt of grades" [ngValue]="opt.Ref">{{opt.Name}}</option>
+                            </select>
+                        </div>
+
+                        <div class="col-auto">
+                            <label class="label label-default">ห้อง</label>
+                            <select class="form-select" [(ngModel)]="room_ref" (click)="searchStudent()">
+                                <option [ngValue]="0">- ทั้งหมด -</option>
+                                <option *ngFor="let opt of rooms" [ngValue]="opt.Ref">{{opt.Name}}</option>
+                            </select>
+                        </div>
+
+                        <div class="col-auto">
+                            <label class="label label-default">กลุ่มวิชา</label>
+                            <select class="form-select" [(ngModel)]="subjectgrp_ref" (change)="searchSubject()">
+                                <option [ngValue]="0">- เลือก -</option>
+                                <option *ngFor="let opt of subjectgrps" [ngValue]="opt.Ref">{{opt.Name}}</option>
+                            </select>
+                        </div>
+
+                        <div class="col-auto">
+                            <label class="label label-default">วิชา</label>
+                            <select class="form-select" [(ngModel)]="subject_ref" (change)="searchStudent()">
+                                <option [ngValue]="0">- เลือก -</option>
+                                <option *ngFor="let opt of subjects" [ngValue]="opt.Ref">{{opt.Name}}</option>
+                            </select>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div id="subject-student-view">
+
+            <div class="card">
+
+                <div class="card-body">
+
+                    <div class="card-title">
+                        <h5>เพิ่ม/แก้ไข นักเรียน</h5>
+                    </div>
+
+                    <div class="toolbar">
+
+                        <div class="row">
+
+                            <div class="col-auto">
+                                <label class="label label-default">เพิ่ม/ลบทั้งชั้นเรียน</label>
+                                <div class="input-group">
+                                    <select class="form-select" [(ngModel)]="grade_ref" (change)="searchSubject()">
+                                        <option [ngValue]="0">- เลือก -</option>
+                                        <option *ngFor="let opt of grades" [ngValue]="opt.Ref">{{opt.Name}}</option>
+                                    </select>
+                                    <div class="input-group-append">
+                                        <button type="button" (click)="insertAllGrade()" >เพิ่ม</button>
+                                        <button type="button" (click)="deleteAllGrade()" >ลบ</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-auto">
+                                <label class="label label-default">เพิ่ม/ลบทั้งห้องเรียน</label>
+                                <div class="input-group">
+                                    <select class="form-select" [(ngModel)]="room_ref">
+                                        <option [ngValue]="0">- เลือก -</option>
+                                        <option *ngFor="let opt of rooms" [ngValue]="opt.Ref">{{opt.Name}}</option>
+                                    </select>
+                                    <div class="input-group-append">
+                                        <button type="button" (click)="insertByRoom()" >เพิ่ม</button>
+                                        <button type="button" (click)="deleteByRoom()">ลบ</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-auto">
+                                <label class="label label-default">เพิ่ม/ลบจากรหัสนักเรียน</label>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" style="width: 10em;" [(ngModel)]="student_code"/>
+                                    <div class="input-group-append">
+                                        <button type="button" (click)="insertByCode()">เพิ่ม</button>
+                                        <button type="button" (click)="deleteByCode()">ลบ</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <table id="subjectstudent-table" class="table display ">
+                        <caption></caption>
+
+                        <thead>
+                            <tr>
+                                <th scope="col">{{dt.headerRow[0]}}</th>
+                                <th scope="col">{{dt.headerRow[1]}}</th>
+                                <th scope="col">{{dt.headerRow[2]}}</th>
+                                <th scope="col">{{dt.headerRow[3]}}</th>
+                                <th scope="col">{{dt.headerRow[4]}}</th>
+                                <th scope="col">{{dt.headerRow[5]}}</th>
+                            </tr>
+                        </thead>
+
+                        <tfoot>
+                            <tr>
+                                <th scope="col">{{dt.footerRow[0]}}</th>
+                                <th scope="col">{{dt.footerRow[1]}}</th>
+                                <th scope="col">{{dt.footerRow[2]}}</th>
+                                <th scope="col">{{dt.footerRow[3]}}</th>
+                                <th scope="col">{{dt.footerRow[4]}}</th>
+                                <th scope="col">{{dt.footerRow[5]}}</th>
+                            </tr>
+                        </tfoot>
+
+                        <tbody>
+                            <tr *ngFor="let row of dt.dataRows">
+                                <td>{{row[0]}}</td>
+                                <td>{{row[1]}}</td>
+                                <td>{{row[2]}}</td>
+                                <td>{{row[3]}}</td>
+                                <td>{{row[4]}}</td>
+                                <td>{{row[5]}}</td>
+                            </tr>
+                        </tbody>
+                        
+                    </table>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

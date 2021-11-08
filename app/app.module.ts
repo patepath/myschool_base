@@ -37,6 +37,7 @@ import { CheckinprofildFrmComponent} from './forms/checkinprofild-frm/checkinpro
 import { CheckinprofileComponent } from './setting/checkinprofile/checkinprofile.component';
 
 import { StudentRegisterFormComponent } from './student-register-form/student-register-form.component';
+import { TeacherLayoutComponent } from './layouts/teacher-layout/teacher-layout.component';
 
 
 @NgModule({
@@ -73,6 +74,7 @@ import { StudentRegisterFormComponent } from './student-register-form/student-re
         CheckinprofileComponent,
         CheckinprofildFrmComponent,
         StudentRegisterFormComponent,
+        TeacherLayoutComponent,
     ],
     bootstrap:    [ AppComponent ]
 })

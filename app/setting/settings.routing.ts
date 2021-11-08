@@ -13,6 +13,7 @@ import { TeacherComponent } from './teacher/teacher.component';
 import { DeptComponent } from './dept/dept.component';
 import { SubjectComponent } from './subject/subject.component';
 import { SubjectgroupComponent } from './subjectgroup/subjectgroup.component';
+import { SubjectStudentComponent } from './subject-student/subject-student.component';
 
 export const SettingRoutes: Routes = [ 
     {
@@ -31,6 +32,7 @@ export const SettingRoutes: Routes = [
             { path: 'dept', component: DeptComponent },
             { path: 'subject', component: SubjectComponent },
             { path: 'subjectgroup', component: SubjectgroupComponent },
+            { path: 'subjectstudent', component: SubjectStudentComponent },
         ] 
     }
 ]

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,AfterViewInit } from '@angular/core';
 
 import { Grade, Room, Student } from '../../school';
 import { User } from '../../services/user.service';
@@ -8,6 +8,7 @@ import { StudentService } from '../../services/student.service';
 import { SubjectgroupService, SubjectGroup} from '../../services/subjectgroup.service';
 import { SubjectService, Subject } from '../../services/subject.service';
 import { CheckinsubjectService, CheckinSubject, CheckinSubjectStudent  } from '../../services/checkinsubject.service';
+import { convertCompilerOptionsFromJson } from 'typescript';
 
 declare var $:any;
 
@@ -16,7 +17,7 @@ declare var $:any;
   templateUrl: './subject.component.html',
   styleUrls: ['./subject.component.css']
 })
-export class SubjectComponent implements OnInit {
+export class SubjectComponent implements OnInit,AfterViewInit {
   public user: User;
   public result: Result;
   public checkindate: string;
@@ -50,6 +51,7 @@ export class SubjectComponent implements OnInit {
     public subjectServ: SubjectService,
     public checkinsubjectServ: CheckinsubjectService) { }
 
+
   ngOnInit(): void {
     this.user = JSON.parse(localStorage.getItem('currentUser'));
 
@@ -79,8 +81,10 @@ export class SubjectComponent implements OnInit {
     }
 
     var date = new Date();
-    this.checkindate = date.getDate() + '/' + (date.getMonth()+1) + '/' +date.getFullYear();
-    this.checkinsubject.Created = date.getFullYear() + '-' + (date.getMonth()+1) + '-' + date.getDate();
+    //this.checkindate = date.getDate() + '/' + (date.getMonth()+1) + '/' + date.getFullYear();
+    //this.checkinsubject.Created = date.getFullYear() + '-' + (date.getMonth()+1) + '-0' + date.getDate();
+    this.checkinsubject.Created = date.toISOString().split('T')[0]
+
 
     this.gradeServ.get().subscribe(grades => this.grades = grades);
     this.grade_ref = 0;
@@ -92,7 +96,18 @@ export class SubjectComponent implements OnInit {
 
     $('#warning-tag').css('display', 'none');
     $('#btnsave').css('display', 'none');
+    console.log(this.checkinsubject.Created);
+
+    //var dt = $('.datepicker').datepicker({ format: 'dd/mm/yyyy', autoclose: true });
+
+    //dt.on('changeDate', () => {
+    //  dt.datepicker('hide');  
+    //})
   }
+
+  ngAfterViewInit(): void {
+  }
+
 
   periodChange() {
     this.checkinsubjectServ.checkDuplicate(
