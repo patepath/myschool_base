@@ -112,7 +112,7 @@ export class LoginComponent implements OnInit{
                         break;
                     
                     case "teacher":
-                        this.router.navigate(['checkinout']);
+                        this.router.navigate(['checkin_teacher/checkin_subject']);
                         break;
 
                     case "student":

@@ -77,6 +77,7 @@ export class StudentComponent implements OnInit, AfterViewInit {
 				search: "_INPUT_",
 				searchPlaceholder: "Search records",
 			},
+			order: [[0, 'desc']],
 			pagingType: "full_numbers",
 		});
 

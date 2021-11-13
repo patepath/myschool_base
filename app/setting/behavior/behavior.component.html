@@ -55,7 +55,7 @@
                                     
                                     <div class="col-4">
                                         <label>กลุ่ม</label>
-                                        <select class="form-control" [(ngModel)]="group" (change)="changeGroupName()">
+                                        <select class="form-select" [(ngModel)]="group" (change)="changeGroupName()">
                                             <option *ngFor="let opt of groups" [ngValue]="opt" >{{opt.Name}}</option>
                                         </select>
                                         <span style="color: mediumblue; cursor: pointer;" (click)="insertgroup()">เพิ่มกลุ่มใหม่</span>
@@ -147,7 +147,7 @@
 
                             <div class="col-auto">
                                 <label>กลุ่ม</label>
-                                <select class="form-control" [(ngModel)]="group" (change)="search()">
+                                <select class="form-select" [(ngModel)]="group" (change)="search()">
                                     <option *ngFor="let opt of groups" [ngValue]="opt" >{{opt.Name}}</option>
                                 </select>
                             </div>
@@ -163,7 +163,7 @@
 
                     </div>
 
-                    <table id="behaviorTable" class="table table-striped table-bordered">
+                    <table id="behaviorTable" class="table display">
 
                         <caption></caption>
 

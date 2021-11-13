@@ -30,6 +30,7 @@ export class SubjectComponent implements OnInit, AfterViewInit {
   public subject: Subject;
 
   public grades: Grade[];
+  public grade_ref: number;
 
   constructor(
     public subjectgroupServ: SubjectgroupService, 
@@ -47,6 +48,7 @@ export class SubjectComponent implements OnInit, AfterViewInit {
 		};
 
     this.gradeServ.get().subscribe(grades => this.grades = grades);
+    this.grade_ref = 0;
 
     this.initSubject();
     this.subjectgroupServ.get().subscribe(subjectgroups => { this.subjectgroups = subjectgroups});

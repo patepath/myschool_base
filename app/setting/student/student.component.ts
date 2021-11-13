@@ -79,6 +79,7 @@ export class StudentComponent implements OnInit, AfterViewInit {
 		this.user = {
 			Ref: 0,
 			IdCard: '',
+			Code: '',
 			Name: '',
 			Fullname: '',
 			Password: '',

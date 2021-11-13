@@ -10,9 +10,9 @@ export const CheckinoutRoutes: Routes = [
         path: '',
         children: [
             { path: '', component: StudentComponent },
-            { path: 'student', component: StudentComponent },
+            { path: 'cam_student', component: StudentComponent },
             { path: 'employee', component: EmployeeComponent },
-            { path: 'checkinsubject', component: SubjectComponent },
+            { path: 'checkin_subject', component: SubjectComponent },
             { path: 'checkinreport', component: CheckinreportComponent },
         ] 
     }

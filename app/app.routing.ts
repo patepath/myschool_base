@@ -10,6 +10,7 @@ export const AppRoutes: Routes = [{
         path: '',
         redirectTo: '/pages/login',
         pathMatch: 'full',
+
       },{
         path: '',
         component: AdminLayoutComponent,
@@ -60,16 +61,26 @@ export const AppRoutes: Routes = [{
             path: '',
             loadChildren: './widgets/widgets.module#WidgetsModule'
         }]
-    },{
+
+    }, {
         path: '',
         component: TeacherLayoutComponent,
         canActivate:[AuthGuard],
-        children: [{path: 'teacher', loadChildren: './teacher/teacher.module#TeacherModule'}]
+        children: [
+        {
+            path: 'checkin_teacher',
+            loadChildren: './checkinout/checkinout.module#CheckinoutModule'
+        }, {
+            path: 'report_teacher', 
+            loadChildren: './teacher/teacher.module#TeacherModule'
+        }]
+
     }, {
         path: '',
         component: StudentLayoutComponent,
         canActivate:[AuthGuard],
         children: [{path: 'student', loadChildren: './student/student.module#StudentModule'}]
+
     }, {
         path: '',
         component: AuthLayoutComponent,

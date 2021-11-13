@@ -53,6 +53,8 @@
             </div>
         </div>
 
+
+
         <div class="card">
 
             <div class="card-body">
@@ -63,12 +65,12 @@
 
                 <div class="row mt-2">
 
-                    <div class="col-auto">
+                    <div class="col-2">
                         <label class="label label-default">วันที่เช็คชื่อ</label>
                         <input type="date" class="form-control" [(ngModel)]="checkinsubject.Created" disabled>
                     </div>
 
-                    <div class="col-auto">
+                    <div class="col-1">
                         <label class="label label-default">คาบที่</label>
                         <select class="form-select" [(ngModel)]="checkinsubject.Period" (click)="periodChange()">
                             <option [ngValue]="0">- เลือก -</option>
@@ -86,6 +88,20 @@
                     </div>
 
                     <div class="col-auto">
+                        <label>เช็คชื่อโดย</label>
+                        <input type="text" class="form-control" [(ngModel)]="checkinsubject.TeacherFullName" readonly/>
+<!--
+                        <select class="form-select" [(ngModel)]="checkinsubject.TeacherRef">
+                            <option *ngFor="let opt of teachers" [ngValue]="opt.Ref">{{opt.FirstName + ' ' + opt.LastName}}</option>
+                        </select>
+-->
+                    </div>
+                
+                </div>
+
+                <div class="row mt-1">
+
+                    <div class="col-2">
                         <label class="label label-default">ระดับชั้น</label>
                         <select class="form-select" [(ngModel)]="checkinsubject.GradeRef" (change)="gradeChange()" disabled>
                             <option [ngValue]="0">- เลือก -</option>
@@ -93,7 +109,7 @@
                         </select>
                     </div>
 
-                    <div class="col-auto">
+                    <div class="col-1">
                         <label class="label label-default">ห้อง</label>
                         <select class="form-select" [(ngModel)]="checkinsubject.RoomRef" (change)="roomChange()" disabled>
                             <option [ngValue]="0">- เลือก -</option>

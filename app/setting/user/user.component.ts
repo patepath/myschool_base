@@ -51,6 +51,7 @@ export class UserComponent implements OnInit, AfterViewInit {
     this.user = {
       Ref: 0,
       IdCard: 'aaa',
+      Code: '',
       Name: '',
       Password: '',
       Fullname: '',
@@ -201,6 +202,7 @@ export class UserComponent implements OnInit, AfterViewInit {
     this.user = {
       Ref: 0,
       IdCard: '',
+      Code: '',
       Name: '',
       Password: '',
       Fullname: '',

@@ -15,10 +15,10 @@ export class ConfigService {
 	}
 
 	public getURL(): string {
-		//return 'https://www.myschool-sara.com/api/schoolcore';
+		return 'https://www.myschool-sara.com/api/schoolcore';
 		//return 'https://www.myschool-bangphlee.com/api/schoolcore';
 		//return 'http://localhost/api/schoolcore';
-		return 'http://localhost:8080/schoolcore';
+		//return 'http://localhost:8080/schoolcore';
 	}
 
 	getGenders(): Observable<Opt[]> {

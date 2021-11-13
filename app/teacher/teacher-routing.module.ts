@@ -1,13 +1,14 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { CheckinoutComponent } from './checkinout/checkinout.component';
 
-export const routes: Routes = [
+import { CheckinreportComponent } from '../checkinout/checkinreport/checkinreport.component';
+
+const routes: Routes = [
   {
     path: '',
     children: [
-        { path: 'checkinout', component: CheckinoutComponent },
-    ],
+        { path: 'checkin_report', component: CheckinreportComponent },
+    ]
   }
 ];
 

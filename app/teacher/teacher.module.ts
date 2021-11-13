@@ -6,22 +6,24 @@ import { JwBootstrapSwitchNg2Module } from 'jw-bootstrap-switch-ng2';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { TagInputModule } from 'ngx-chips';
 
-import { TeacherRoutingModule, routes } from './teacher-routing.module';
-import { CheckinoutComponent } from './checkinout/checkinout.component';
-
+import {  TeacherRoutingModule } from './teacher-routing.module';
+import { CheckinreportComponent } from '../checkinout/checkinreport/checkinreport.component';
 
 @NgModule({
-  declarations: [CheckinoutComponent],
+  declarations: [
+    CheckinreportComponent,
+  ],
   imports: [
     CommonModule,
-    RouterModule.forChild( routes ),
+    CommonModule,
+//    RouterModule.forChild( routes ),
     FormsModule,
     ReactiveFormsModule,
     TagInputModule,
     JwBootstrapSwitchNg2Module,
     NgbModule,
     FormsModule,
-    TeacherRoutingModule
+    TeacherRoutingModule,
   ]
 })
 export class TeacherModule { }

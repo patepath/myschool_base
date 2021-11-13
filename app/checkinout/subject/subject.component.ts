@@ -8,7 +8,6 @@ import { StudentService } from '../../services/student.service';
 import { SubjectgroupService, SubjectGroup} from '../../services/subjectgroup.service';
 import { SubjectService, Subject } from '../../services/subject.service';
 import { CheckinsubjectService, CheckinSubject, CheckinSubjectStudent  } from '../../services/checkinsubject.service';
-import { convertCompilerOptionsFromJson } from 'typescript';
 
 declare var $:any;
 
@@ -42,6 +41,9 @@ export class SubjectComponent implements OnInit,AfterViewInit {
 
   public msg_header: string;
   public msg_body: string;
+  public isDup: boolean;
+
+  public noOfPeriod: number;
 
   constructor(
     public gradeServ: GradeService, 
@@ -81,10 +83,7 @@ export class SubjectComponent implements OnInit,AfterViewInit {
     }
 
     var date = new Date();
-    //this.checkindate = date.getDate() + '/' + (date.getMonth()+1) + '/' + date.getFullYear();
-    //this.checkinsubject.Created = date.getFullYear() + '-' + (date.getMonth()+1) + '-0' + date.getDate();
     this.checkinsubject.Created = date.toISOString().split('T')[0]
-
 
     this.gradeServ.get().subscribe(grades => this.grades = grades);
     this.grade_ref = 0;
@@ -96,18 +95,12 @@ export class SubjectComponent implements OnInit,AfterViewInit {
 
     $('#warning-tag').css('display', 'none');
     $('#btnsave').css('display', 'none');
-    console.log(this.checkinsubject.Created);
 
-    //var dt = $('.datepicker').datepicker({ format: 'dd/mm/yyyy', autoclose: true });
-
-    //dt.on('changeDate', () => {
-    //  dt.datepicker('hide');  
-    //})
+    this.noOfPeriod = 1;
   }
 
   ngAfterViewInit(): void {
   }
-
 
   periodChange() {
     this.checkinsubjectServ.checkDuplicate(
@@ -118,13 +111,19 @@ export class SubjectComponent implements OnInit,AfterViewInit {
       this.result = r;
 
       if(!this.result.Success){
+        this.isDup = true;
         $('#warning-tag').css('display', 'inline');
         $('#btnsave').css('display', 'none');
         this.checkinsubject.Students = [];
         
       } else if(this.checkinsubject.RoomRef != 0) {
+        this.isDup = false;
         $('#warning-tag').css('display', 'none');
-        $('#btnsave').css('display', 'inline');
+
+        if(this.checkinsubject.RoomRef> 0 && this.checkinsubject.SubjectRef>0) {
+          $('#btnsave').css('display', 'inline');
+        } 
+
         this.checkinsubject.Students = [];
 
         this.studentServ.get(this.grade_ref, this.room_ref, '').subscribe(students => {
@@ -166,15 +165,19 @@ export class SubjectComponent implements OnInit,AfterViewInit {
     this.subjects = [];
     this.checkinsubject.SubjectRef= 0;
     this.checkinsubject.Students = [];
+
     $('#warning-tag').css('display', 'none');
     $('#btnsave').css('display', 'none');
   }
 
+  dateChange() {
+    this.roomChange();
+    this.subjectChange();
+  }
+
   roomChange() {
     this.checkinsubject.RoomRef = this.room_ref;
-
     this.checkinsubject.Students = [];
-
 
     this.checkinsubjectServ.checkDuplicate(
       this.checkinsubject.Created, 
@@ -183,14 +186,17 @@ export class SubjectComponent implements OnInit,AfterViewInit {
 
       this.result = r;
 
-      if(!this.result.Success){
-        $('#warning-tag').css('display', 'inline');
-        $('#btnsave').css('display', 'none');
-        
-      } else {
+      if(this.result.Success){
+        this.isDup = false;
         $('#warning-tag').css('display', 'none');
-        $('#btnsave').css('display', 'inline');
 
+        if(this.checkinsubject.RoomRef>0 && this.checkinsubject.SubjectRef > 0) {
+          $('#btnsave').css('display', 'inline');
+
+        } else {
+          $('#btnsave').css('display', 'none');
+        }
+        
         this.studentServ.get(this.grade_ref, this.room_ref, '').subscribe(students => {
           this.students = students
 
@@ -217,6 +223,12 @@ export class SubjectComponent implements OnInit,AfterViewInit {
           })
 
         });
+
+      } else {
+        this.isDup = true;
+        $('#warning-tag').css('display', 'inline');
+        $('#btnsave').css('display', 'none');
+
       }
     })
   }
@@ -225,6 +237,15 @@ export class SubjectComponent implements OnInit,AfterViewInit {
     this.subjectServ.getByGradeGroup(this.grade_ref.toString(), this.subjectgroup_ref.toString()).subscribe(subjects => {this.subjects = subjects});
     this.subjects = [];
     this.checkinsubject.SubjectRef= 0;
+    $('#btnsave').css('display', 'none');
+  }
+
+  subjectChange() {
+    if(!this.isDup && this.checkinsubject.RoomRef > 0 && this.checkinsubject.SubjectRef > 0) {
+      $('#btnsave').css('display', 'inline');
+    } else {
+      $('#btnsave').css('display', 'none');
+    }
   }
 
   normal(index: number) {
@@ -260,10 +281,23 @@ export class SubjectComponent implements OnInit,AfterViewInit {
       this.result = result;
       
       if(this.result.Success) {
-        this.msg_header = 'บันทึกข้อมูลการเช็คชื่อ';
-        this.msg_body = 'บันทึกข้อมูลการเช็คชื่อเรียบร้อย';
-        $('#message').modal('show');
-        $('#btnsave').css('display', 'none');
+
+        if(this.noOfPeriod == 2) {
+          this.checkinsubject.Period = this.checkinsubject.Period + 1;
+
+          this.checkinsubjectServ.save(this.checkinsubject).subscribe(s => {
+            this.msg_header = 'บันทึกข้อมูลการเช็คชื่อ';
+            this.msg_body = 'บันทึกข้อมูลการเช็คชื่อเรียบร้อย';
+            $('#message').modal('show');
+            $('#btnsave').css('display', 'none');
+          });
+
+        } else {
+            this.msg_header = 'บันทึกข้อมูลการเช็คชื่อ';
+            this.msg_body = 'บันทึกข้อมูลการเช็คชื่อเรียบร้อย';
+            $('#message').modal('show');
+            $('#btnsave').css('display', 'none');
+        }
 
       } else {
         this.msg_header = 'บันทึกข้อมูลการเช็คชื่อ';

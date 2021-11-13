@@ -41,6 +41,17 @@ export class TeacherService {
 	return this.http.get<Teacher>(this.urlapi, options);
   }
 
+  getByCode(code: string): Observable<Teacher> {
+	const headers =  new HttpHeaders({ 
+		'Content-Type': 'application/json'
+	});
+
+	const params = { service: "teacher", action: "get_by_code", code: code};
+	const options = { headers, "observe?": "body", params };
+
+	return this.http.get<Teacher>(this.urlapi, options);
+  }
+
   getByGrade(grade: number): Observable<Teacher[]> {
 	const headers =  new HttpHeaders({ 
 		'Content-Type': 'application/json'

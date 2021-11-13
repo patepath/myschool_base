@@ -38,14 +38,14 @@ export class UserService {
 	return this.http.get<User>(this.urlapi, options);
   }
 
-  save(user: User) {
+  save(user: User): Observable<User[]> {
 	const headers =  new HttpHeaders({ 
 		'Content-Type': 'application/json'
 	});
 
 	const params = { service: "user", action: "save"};
 	const options = { headers, "observe?": "body", params };
-		
+
 	return this.http.post<User[]>(this.urlapi, user, options);
   }
 
@@ -65,6 +65,7 @@ export class UserService {
 export interface User {
   Ref: number,
   IdCard: string,
+  Code: string,
   Name: string,
   Password: string,
   Fullname: string,

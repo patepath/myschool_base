@@ -14,12 +14,12 @@
 
                     <div class="col-auto">
                         <label class="label label-default">วันที่เช็คชื่อ</label>
-                        <input type="date" class="form-control" [(ngModel)]="checkinsubject.Created" > 
+                        <input type="date" class="form-control" [(ngModel)]="checkinsubject.Created" (ngModelChange)="dateChange()"> 
                     </div>
 
                     <div class="col-auto">
                         <label class="label label-default">คาบที่</label>
-                        <select class="form-select" [(ngModel)]="checkinsubject.Period" (click)="periodChange()">
+                        <select class="form-select" [(ngModel)]="checkinsubject.Period" (ngModelChange)="periodChange()">
                             <option [ngValue]="0">- เลือก -</option>
                             <option [ngValue]="1">1</option>
                             <option [ngValue]="2">2</option>
@@ -36,7 +36,7 @@
 
                     <div class="col-auto">
                         <label class="label label-default">ระดับชั้น</label>
-                        <select class="form-select" [(ngModel)]="grade_ref" (change)="gradeChange()">
+                        <select class="form-select" [(ngModel)]="grade_ref" (ngModelChange)="gradeChange()">
                             <option [ngValue]="0">- เลือก -</option>
                             <option *ngFor="let opt of grades" [ngValue]="opt.Ref">{{opt.Name}}</option>
                         </select>
@@ -44,7 +44,7 @@
 
                     <div class="col-auto">
                         <label class="label label-default">ห้อง</label>
-                        <select class="form-select" [(ngModel)]="room_ref" (change)="roomChange()">
+                        <select class="form-select" [(ngModel)]="room_ref" (ngModelChange)="roomChange()">
                             <option [ngValue]="0">- เลือก -</option>
                             <option *ngFor="let opt of rooms" [ngValue]="opt.Ref">{{opt.Name}}</option>
                         </select>
@@ -52,7 +52,7 @@
 
                     <div class="col-auto">
                         <label class="label label-default">หมวดวิชา</label>
-                        <select class="form-select" [(ngModel)]="subjectgroup_ref" (change)="subjectgroupChange()">
+                        <select class="form-select" [(ngModel)]="subjectgroup_ref" (ngModelChange)="subjectgroupChange()">
                             <option [ngValue]="0">- เลือก -</option>
                             <option *ngFor="let opt of subjectgroups" [ngValue]="opt.Ref">{{opt.Name}}</option>
                         </select>
@@ -60,10 +60,19 @@
 
                     <div class="col-auto">
                         <label class="label label-default">รหัสวิชา</label>
-                        <select class="form-select" [(ngModel)]="checkinsubject.SubjectRef">
+                        <select class="form-select" [(ngModel)]="checkinsubject.SubjectRef" (ngModelChange)="subjectChange()" >
                             <option [ngValue]="0">- เลือก -</option>
                             <option *ngFor="let opt of subjects" [ngValue]="opt.Ref">{{opt.Code + " " + opt.Name}}</option>
                         </select>
+                    </div>
+
+                    <div class="col-auto">
+                        <label class="label label-default">จำนวนคาบที่เช็ค</label>
+                        <select class="form-select" [(ngModel)]="noOfPeriod">
+                            <option [ngValue]="1">1 คาบ</option>
+                            <option [ngValue]="2">2 คาบ</option>
+                        </select>
+
                     </div>
 
                 </div>

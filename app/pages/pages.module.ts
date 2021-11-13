@@ -21,7 +21,7 @@ import { LineRegisterComponent } from './line-register/line-register.component';
         LoginComponent,
         RegisterComponent,
         LockComponent,
-        LineRegisterComponent
+        LineRegisterComponent,
     ]
 })
 

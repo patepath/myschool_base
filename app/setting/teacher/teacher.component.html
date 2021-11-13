@@ -11,7 +11,7 @@
                     <div class="row mb-2">
                         <div class="col-4">
                             <label>แผนก</label>
-                            <select class="form-control" [(ngModel)]="teacher.DeptRef">
+                            <select class="form-select" [(ngModel)]="teacher.DeptRef">
                                 <option [ngValue]="0">- ไม่ระบุ -</option>
                                 <option *ngFor="let opt of depts" [ngValue]="opt.Ref">{{opt.Name}}</option>
                             </select>
@@ -22,7 +22,7 @@
                         <div class="col-2">
 
                             <label>ประจำชั้นเรียน</label>
-                            <select class="form-control" [(ngModel)]="grade_ref" (change)="gradeChange()">
+                            <select class="form-select" [(ngModel)]="grade_ref" (change)="gradeChange()">
                                 <option [ngValue]="0">-  ไม่ระบุ -</option>
                                 <option *ngFor="let opt of getGrades" [ngValue]="opt.Ref">{{opt.Name}}</option>
                             </select>
@@ -30,7 +30,7 @@
 
                         <div class="col-2">
                             <label>ห้อง</label>
-                            <select class="form-control" [(ngModel)]="room_ref">
+                            <select class="form-select" [(ngModel)]="room_ref">
                                 <option [ngValue]="0">- ไม่ระบุ  -</option>
                                 <option *ngFor="let opt of getRooms" [ngValue]="opt.Ref">{{opt.Name}}</option>
                             </select>
@@ -109,7 +109,7 @@
 
                             <div class="col-2">
                                 <label>ชั้นเรียน</label>
-                                <select class="form-control" [(ngModel)]="grade_ref" (change)="searchByGrade()">
+                                <select class="form-select" [(ngModel)]="grade_ref" (change)="searchByGrade()">
                                     <option [ngValue]="0">- ไม่ระบุ -</option>
                                     <option *ngFor="let grade of getGrades" [ngValue]="grade.Ref">{{grade.Name}}</option>
                                 </select>
@@ -126,15 +126,15 @@
 
                     </div>
 
-                    <table id="teacherTable" class="table table-striped table-bordered">
+                    <table id="teacherTable" class="table display">
                         <caption></caption>
 
                         <thead>
                             <tr>
-                                <th scope="col">{{ dataTable.headerRow[0] }}</th>
-                                <th scope="col">{{ dataTable.headerRow[1] }}</th>
-                                <th scope="col">{{ dataTable.headerRow[2] }}</th>
-                                <th scope="col">{{ dataTable.headerRow[3] }}</th>
+                                <th scope="col" style="width: 20em">{{ dataTable.headerRow[0] }}</th>
+                                <th scope="col" style="width: 15em">{{ dataTable.headerRow[1] }}</th>
+                                <th scope="col" style="width: 5em">{{ dataTable.headerRow[2] }}</th>
+                                <th scope="col" style="width: 5em">{{ dataTable.headerRow[3] }}</th>
                                 <th scope="col">{{ dataTable.headerRow[4] }}</th>
                             </tr>
                         </thead>

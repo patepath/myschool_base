@@ -60,45 +60,7 @@ export class LoginService {
 		const params = { service: "user", action: "login" };
 		const options = { headers, "observe?": "body", params };
 
-
     return this.http.post<User>(this.urlapi, this.payload, options);
-  }
-
-  login_bak(loginfrm: Loginfrm): boolean {
-
-    localStorage.setItem('currentUser', '{}');
-    
-    this.payload.A = Md5.init(loginfrm.username);
-    this.payload.B = Md5.init(loginfrm.userpassword);
-
- 		const headers =  new HttpHeaders({ 
-			'Content-Type': 'application/json'
-		});
-
-		const params = { service: "user", action: "login" };
-		const options = { headers, "observe?": "body", params };
-
-		this.http.post<User>(this.urlapi, this.payload, options).subscribe(
-      user =>  {
-        this.user = user;
-        localStorage.setItem('currentUser', JSON.stringify(this.user));
-
-        switch(user.Role) {
-
-          case "admin":
-            this.router.navigate(['checkinout']);
-            break;
-          
-          case "user":
-            this.router.navigate(['/user']);
-            break;
-
-        }
-
-      }
-    );
-
-    return false;
   }
 
   logut() {

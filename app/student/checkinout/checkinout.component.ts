@@ -158,9 +158,11 @@ export class CheckinoutComponent implements OnInit, AfterViewInit {
 			var table = $('#checkinoutTable').DataTable();
 			table.clear();
 
-			checkinouts.forEach(s => {
-				this.data.push([s.DateTime, s.StudentCode, s.StudentFullName, s.Temperature.toString(), s.Ref.toString()]);
-			});
+			if(checkinouts != null) {
+				checkinouts.forEach(s => {
+					this.data.push([s.DateTime, s.StudentCode, s.StudentFullName, s.Temperature.toString(), s.Ref.toString()]);
+				});
+			}
 
 			table.rows.add(this.data)
 			table.draw();

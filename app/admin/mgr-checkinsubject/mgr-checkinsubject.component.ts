@@ -1,10 +1,10 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 
-import { Grade, Room, Student } from '../../school';
-import { CheckinsubjectService, CheckinSubject, CheckinSubjectStudent, CheckinStudent} from '../../services/checkinsubject.service';
+import { Grade, Room, Student,Teacher } from '../../school';
+import { CheckinsubjectService, CheckinSubject, CheckinSubjectStudent } from '../../services/checkinsubject.service';
 import { GradeService} from '../../services/grade.service';
 import { RoomService } from '../../services/room.service';
-import { StudentService } from '../../services/student.service';
+import { TeacherService } from '../../services/teacher.service';
 import { SubjectgroupService, SubjectGroup} from '../../services/subjectgroup.service';
 import { SubjectService, Subject } from '../../services/subject.service';
 
@@ -36,6 +36,8 @@ export class MgrCheckinsubjectComponent implements OnInit, AfterViewInit {
   public rooms_search: Room[];
   public room_search_ref: number;
 
+  public teachers: Teacher[];
+
   public students: Student[];
 
   public subjectgroups: SubjectGroup[];
@@ -57,6 +59,7 @@ export class MgrCheckinsubjectComponent implements OnInit, AfterViewInit {
   constructor(
     public gradeServ: GradeService,
     public roomServ: RoomService,
+    public teacherServ: TeacherService,
     public subjectgrpServ: SubjectgroupService,
     public subjectServ: SubjectService,
     public checkinsubjectServ: CheckinsubjectService) { }
@@ -94,7 +97,7 @@ export class MgrCheckinsubjectComponent implements OnInit, AfterViewInit {
     }
 
     this.gradeServ.get().subscribe(s => this.grades = s);    
-
+    this.teacherServ.get().subscribe(s => this.teachers = s) 
     this.subjectgrpServ.get().subscribe(s => this.subjectgroups = s);
 
     this.period_search = 0;
@@ -108,33 +111,6 @@ export class MgrCheckinsubjectComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-//		var self = this;
-//
-//		var table = $('#checkinsubject-table').DataTable({
-//		//	dom: 'Bfrtip',
-//			buttons: [
-//				'copy', 'csv', 'excel', 'pdf', 'print'
-//			],
-//			responsive: true,
-//			language: {
-//				search: "_INPUT_",
-//				searchPlaceholder: "Search records",
-//			},
-//			pagingType: "full_numbers",
-//		});
-//
-//		table.on('mouseover', 'tr', function() {
-//			let $tr = $(this).closest('tr');
-//
-//			$(this).css('cursor', 'pointer');
-//		});
-//
-//		table.on('click', 'td', function() {
-//			let $tr = $(this).closest('tr');
-//
-//			var data = table.row($tr).data();
-//		});
-//
     $('#warning-tag').css('display', 'none');
     $('#btnSave').css('display', 'none');
     $('#btnDelete').css('display', 'none');
@@ -166,7 +142,6 @@ export class MgrCheckinsubjectComponent implements OnInit, AfterViewInit {
   periodSearchChange() {
     if(this.room_search_ref != 0) {
       this.search();
-
     } 
   }
 
@@ -192,35 +167,14 @@ export class MgrCheckinsubjectComponent implements OnInit, AfterViewInit {
   search() {
     this.checkinsubjectServ.getByKey(this.checkindate_search, this.period_search.toString(), this.room_search_ref.toString()).subscribe(s => {
       this.checkinsubject = s
+      console.log(this.checkinsubject);
+      
       this.gradeChange();
       this.subjectgroupChange();
 
-//      this.refresh_table();
-
-//      this.checkinsubject.Students.forEach((student,i) => { 
-//       switch(student.StatusNo) {
-//         case 1:
-//           $('#row' + i).css('background-color', 'white');
-//           break;
-//
-//         case 2:
-//           $('#row' + i).css('background-color', '#ff7f50');
-//           break;
-//         
-//         case 3:
-//           $('#row' + i).css('background-color', '#FFDDB9');
-//           break;
-//
-//         case 4:
-//           console.log(student.StatusNo + ' ' +'#row'+1);
-//           $('#row' + i).css('background-color', '#C3C3C3');
-//           break;
-//       }
-//      });
-      
-        $('#warning-tag').css('display', 'none');
-        $('#btnSave').css('display', 'inline');
-        $('#btnDelete').css('display', 'inline');
+      $('#warning-tag').css('display', 'none');
+      $('#btnSave').css('display', 'inline');
+      $('#btnDelete').css('display', 'inline');
     });
   }
 

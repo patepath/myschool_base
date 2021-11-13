@@ -178,8 +178,8 @@ export const ADMIN_ROUTES = [
         collapse: 'checkinout',
         icontype: 'nc-icon nc-camera-compact',
         children: [
-            {path: 'student', title: 'การเข้า-ออก นักเรียน', ab: '1'},
-            {path: 'checkinsubject', title: 'เช็คชื่อรายคาบ', ab: '2'},
+            {path: 'cam_student', title: 'การเข้า-ออก นักเรียน', ab: '1'},
+            {path: 'checkin_subject', title: 'เช็คชื่อรายคาบ', ab: '2'},
             {path: 'checkinreport', title: 'รายงานเช็คชื่อรายคาบ', ab: '3'},
         ]
     }, {
@@ -240,24 +240,24 @@ export const ADMIN_ROUTES = [
 
 export const TEACHER_ROUTES = [
     {
-        path: '/checkinout',
+        path: 'checkin_teacher',
         title: 'การเข้า-ออก',
         type: 'sub',
-        collapse: 'checkinout',
+        collapse: 'checkin_teacher',
         icontype: 'nc-icon nc-camera-compact',
         children: [
-            {path: 'student', title: 'การเข้า-ออก นักเรียน', ab: '1'},
-            {path: 'checkinsubject', title: 'เช็คชื่อรายคาบ', ab: '2'},
-            {path: 'checkinreport', title: 'รายงานเช็คชื่อรายคาบ', ab: '3'},
+            { path: 'cam_student', title: 'การเข้า-ออก นักเรียน', ab: '1' },
+            { path: 'checkin_subject', title: 'เช็คชื่อรายคาบ', ab: '2' },
         ]
+
     }, {
-        path: '/teacher',
-        title: 'รายงาน',
+        path: 'report_teacher',
+        title: 'รายงานสำหรับครู',
         type: 'sub',
-        collapse: 'teacher',
+        collapse: 'report_teacher',
         icontype: 'nc-icon nc-paper',
         children: [
-            {path: 'checkinout', title: 'การเข้า-ออก', ab: '1'},
+            { path: 'checkin_report', title: 'รายการเช็คชื่อตามห้อง', ab: '1' },
         ]
     } 
 ];
@@ -268,6 +268,11 @@ export const STUDENT_ROUTES = [
         title: 'การเข้า-ออก',
         type: 'link',
         icontype: 'nc-icon nc-camera-compact',
+    }, { 
+        path: 'checkinout/checkinreport',
+        title: 'การเช็คชื่อ',
+        type: 'link',
+        icontype: 'nc-icon nc-ruler-pencil',
     }, { 
         path: 'student/questionaire',
         title: 'แบบประเมิน',
@@ -315,14 +320,18 @@ export class SidebarComponent implements OnInit  {
             
             case "teacher":
                 this.menuItems = TEACHER_ROUTES.filter(menuItem => menuItem);
+                //this.menuItems = TEACHER_ROUTES;
                 break;
 
             case "student":
                 //this.menuItems = STUDENT_ROUTES.filter(menuItem => menuItem);
                 this.menuItems = STUDENT_ROUTES;
-                this.studentServ.getFaceImgByCode(this.user.Name).subscribe( img => {
-                    this.faceImg = img; 
-                });
+               // this.studentServ.getFaceImgByCode(this.user.Name).subscribe( img => {
+
+               //     if(img != '') {
+               //         this.faceImg = img;
+               //     }
+               // });
 
                 break;
         }
